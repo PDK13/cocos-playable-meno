@@ -153,7 +153,7 @@
     "_priority": 1,
     "_fov": 45,
     "_fovAxis": 0,
-    "_orthoHeight": 1341.1055276381908,
+    "_orthoHeight": 841.8927444794953,
     "_near": 1,
     "_far": 1000,
     "_color": {
@@ -2041,7 +2041,7 @@
     "loopTimeOut": false,
     "directStore": false,
     "androidLink": "https://play.google.com/store/apps/details?id=com.mgif.merino.adventure",
-    "iosLink": "",
+    "iosLink": "https://apps.apple.com/us/app/rub-adventure-mystery-island/id6463469441",
     "adsType": 0,
     "panelComplete": {
       "__id__": 33
@@ -11175,7 +11175,7 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 1919.9999999999998,
+      "width": 1920,
       "height": 1080
     },
     "_anchorPoint": {
