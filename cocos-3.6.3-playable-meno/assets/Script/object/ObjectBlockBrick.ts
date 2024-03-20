@@ -74,7 +74,7 @@ export class ObjectBlockBrick extends Component {
                 }
                 break;
             case 101://player head
-                if(player && player.rigidbody.linearVelocity.y >= 0)
+                if(player && player.m_rigidbody.linearVelocity.y >= 0)
                 {
                     setTimeout(() => {
                         director.emit(GameEvent.PLAYER_JUMP_STOP);                
