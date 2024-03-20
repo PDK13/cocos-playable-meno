@@ -1,0 +1,90 @@
+{
+"skeleton": {
+	"hash": "SP5Vg3zBJIQ97E+nN3xuehoegx0",
+	"spine": "3.8.99",
+	"x": -75.23,
+	"y": -1.01,
+	"width": 154,
+	"height": 64.36,
+	"images": "../images/",
+	"audio": ""
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "bone", "parent": "root", "x": -0.27, "y": -22.92 },
+	{ "name": "fan", "parent": "bone", "x": 2.04, "y": 68.08 },
+	{ "name": "fan2", "parent": "fan" }
+],
+"slots": [
+	{ "name": "base", "bone": "bone", "attachment": "base" },
+	{ "name": "eff", "bone": "fan2", "color": "fff27089", "blend": "additive" },
+	{ "name": "fan", "bone": "bone" },
+	{ "name": "fan1", "bone": "fan2", "attachment": "fan1" },
+	{ "name": "head", "bone": "bone", "attachment": "head" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"base": {
+				"base": { "x": 0.69, "y": 48.91, "width": 34, "height": 54 }
+			},
+			"eff": {
+				"Shockwave17": { "x": -2.04, "y": 2.6, "scaleX": 1.3, "scaleY": 1.3, "width": 128, "height": 128 }
+			},
+			"fan": {
+				"fan": { "x": 2.04, "y": 68.08, "width": 154, "height": 24 }
+			},
+			"fan1": {
+				"fan1": { "width": 154, "height": 24 }
+			},
+			"head": {
+				"head": { "x": 0.64, "y": 76.77, "width": 24, "height": 19 }
+			}
+		}
+	}
+],
+"animations": {
+	"off": {
+		"slots": {
+			"fan": {
+				"attachment": [
+					{ "name": "fan" }
+				]
+			},
+			"fan1": {
+				"attachment": [
+					{ "name": null }
+				]
+			}
+		}
+	},
+	"on": {
+		"slots": {
+			"eff": {
+				"attachment": [
+					{ "name": "Shockwave17" }
+				]
+			}
+		},
+		"bones": {
+			"fan2": {
+				"rotate": [
+					{},
+					{ "time": 0.0667, "angle": -120 },
+					{ "time": 0.1333, "angle": 120 },
+					{ "time": 0.2 },
+					{ "time": 0.2667, "angle": -120 },
+					{ "time": 0.3333, "angle": 120 },
+					{ "time": 0.4 }
+				]
+			},
+			"fan": {
+				"scale": [
+					{ "y": 0.4 }
+				]
+			}
+		}
+	}
+}
+}

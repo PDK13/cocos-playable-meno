@@ -1,0 +1,27 @@
+
+item_prefix.png
+size: 163, 108
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+bling
+  rotate: false
+  xy: 111, 56
+  size: 50, 50
+  orig: 60, 60
+  offset: 5, 5
+  index: -1
+fire/1
+  rotate: false
+  xy: 2, 2
+  size: 107, 104
+  orig: 107, 104
+  offset: 0, 0
+  index: -1
+fire/eyes
+  rotate: false
+  xy: 111, 36
+  size: 37, 18
+  orig: 37, 18
+  offset: 0, 0
+  index: -1

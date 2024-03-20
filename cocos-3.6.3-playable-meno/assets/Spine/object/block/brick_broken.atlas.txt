@@ -1,0 +1,34 @@
+
+brick_broken.png
+size: 105,108
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+1
+  rotate: false
+  xy: 2, 2
+  size: 48, 44
+  orig: 48, 44
+  offset: 0, 0
+  index: -1
+2
+  rotate: false
+  xy: 52, 11
+  size: 51, 26
+  orig: 51, 26
+  offset: 0, 0
+  index: -1
+3
+  rotate: true
+  xy: 2, 48
+  size: 58, 62
+  orig: 58, 62
+  offset: 0, 0
+  index: -1
+4
+  rotate: true
+  xy: 66, 39
+  size: 67, 37
+  orig: 67, 37
+  offset: 0, 0
+  index: -1

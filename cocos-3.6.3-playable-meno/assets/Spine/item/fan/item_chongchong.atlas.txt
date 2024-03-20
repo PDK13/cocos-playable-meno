@@ -1,0 +1,41 @@
+
+item_chongchong.png
+size: 158,170
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Shockwave17
+  rotate: false
+  xy: 2, 2
+  size: 117, 114
+  orig: 128, 128
+  offset: 5, 7
+  index: -1
+base
+  rotate: false
+  xy: 121, 62
+  size: 34, 54
+  orig: 34, 54
+  offset: 0, 0
+  index: -1
+fan
+  rotate: false
+  xy: 2, 144
+  size: 154, 24
+  orig: 154, 24
+  offset: 0, 0
+  index: -1
+fan1
+  rotate: false
+  xy: 2, 118
+  size: 154, 24
+  orig: 154, 24
+  offset: 0, 0
+  index: -1
+head
+  rotate: false
+  xy: 121, 41
+  size: 24, 19
+  orig: 24, 19
+  offset: 0, 0
+  index: -1

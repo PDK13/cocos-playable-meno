@@ -1,0 +1,56 @@
+{
+  "layer": [
+    {
+      "name": "default",
+      "value": 1
+    },
+    {
+      "name": "game",
+      "value": 2
+    }
+  ],
+  "general": {
+    "designResolution": {
+      "width": 1920,
+      "height": 1080,
+      "fitHeight": true
+    }
+  },
+  "physics": {
+    "collisionMatrix": {
+      "0": 0,
+      "1": 92,
+      "2": 18,
+      "3": 2,
+      "4": 70,
+      "5": 64,
+      "6": 50
+    },
+    "collisionGroups": [
+      {
+        "index": 1,
+        "name": "Monster"
+      },
+      {
+        "index": 2,
+        "name": "bullet"
+      },
+      {
+        "index": 3,
+        "name": "target"
+      },
+      {
+        "index": 4,
+        "name": "ground"
+      },
+      {
+        "index": 5,
+        "name": "trigger"
+      },
+      {
+        "index": 6,
+        "name": "player"
+      }
+    ]
+  }
+}
