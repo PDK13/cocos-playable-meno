@@ -1,101 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="40" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="5" nextobjectid="1">
- <tileset firstgid="1" name="ground-top-center" tilewidth="128" tileheight="128" tilecount="1" columns="1">
-  <image source="tile/ground-top-center.png" width="128" height="128"/>
- </tileset>
- <tileset firstgid="2" name="ground-bot-center" tilewidth="128" tileheight="128" tilecount="1" columns="1">
-  <image source="tile/ground-bot-center.png" width="128" height="128"/>
- </tileset>
- <tileset firstgid="3" name="ground-corner-top-right" tilewidth="128" tileheight="128" tilecount="1" columns="1">
-  <image source="tile/ground-corner-top-right.png" width="128" height="128"/>
- </tileset>
- <tileset firstgid="4" name="ground-bot-corner-right" tilewidth="128" tileheight="128" tilecount="1" columns="1">
-  <image source="tile/ground-bot-corner-right.png" width="128" height="128"/>
- </tileset>
- <tileset firstgid="5" name="ground-right-fix" tilewidth="128" tileheight="128" tilecount="1" columns="1">
-  <image source="tile/ground-right-fix.png" width="128" height="128"/>
- </tileset>
- <tileset firstgid="6" name="ground-left-fix" tilewidth="128" tileheight="128" tilecount="1" columns="1">
-  <image source="tile/ground-left-fix.png" width="128" height="128"/>
- </tileset>
- <tileset firstgid="7" name="ground-corner-top-left" tilewidth="128" tileheight="128" tilecount="1" columns="1">
-  <image source="tile/ground-corner-top-left.png" width="128" height="128"/>
- </tileset>
- <tileset firstgid="8" name="ground-left" tilewidth="128" tileheight="128" tilecount="1" columns="1">
-  <image source="tile/ground-left.png" width="128" height="128"/>
- </tileset>
- <tileset firstgid="9" name="ground-center" tilewidth="128" tileheight="128" tilecount="1" columns="1">
-  <image source="tile/ground-center.png" width="128" height="128"/>
-  <tile id="0">
-   <objectgroup draworder="index">
-    <object id="12" x="0" y="0" width="128" height="128"/>
-   </objectgroup>
-  </tile>
- </tileset>
- <tileset firstgid="10" name="ground-right" tilewidth="128" tileheight="128" tilecount="1" columns="1">
-  <image source="tile/ground-right.png" width="128" height="128"/>
- </tileset>
- <tileset firstgid="11" name="ground-bot-corner-left" tilewidth="128" tileheight="128" tilecount="1" columns="1">
-  <image source="tile/ground-bot-corner-left.png" width="128" height="128"/>
- </tileset>
- <tileset firstgid="12" name="Tile" tilewidth="128" tileheight="128" tilecount="11" columns="0">
+ <tileset firstgid="1" name="Tile" tilewidth="128" tileheight="128" tilecount="11" columns="0">
   <grid orientation="orthogonal" width="1" height="1"/>
   <tile id="0">
-   <image width="128" height="128" source="tile/ground-left-fix.png"/>
+   <image width="128" height="128" source="tile/spring/ground-left-fix.png"/>
   </tile>
   <tile id="1">
-   <image width="128" height="128" source="tile/ground-right.png"/>
+   <image width="128" height="128" source="tile/spring/ground-right.png"/>
   </tile>
   <tile id="2">
-   <image width="128" height="128" source="tile/ground-right-fix.png"/>
+   <image width="128" height="128" source="tile/spring/ground-right-fix.png"/>
   </tile>
   <tile id="3">
-   <image width="128" height="128" source="tile/ground-top-center.png"/>
+   <image width="128" height="128" source="tile/spring/ground-top-center.png"/>
   </tile>
   <tile id="4">
-   <image width="128" height="128" source="tile/ground-bot-center.png"/>
+   <image width="128" height="128" source="tile/spring/ground-bot-center.png"/>
   </tile>
   <tile id="5">
-   <image width="128" height="128" source="tile/ground-bot-corner-left.png"/>
+   <image width="128" height="128" source="tile/spring/ground-bot-corner-left.png"/>
   </tile>
   <tile id="6">
-   <image width="128" height="128" source="tile/ground-bot-corner-right.png"/>
+   <image width="128" height="128" source="tile/spring/ground-bot-corner-right.png"/>
   </tile>
   <tile id="7">
-   <image width="128" height="128" source="tile/ground-center.png"/>
+   <image width="128" height="128" source="tile/spring/ground-center.png"/>
   </tile>
   <tile id="8">
-   <image width="128" height="128" source="tile/ground-corner-top-left.png"/>
+   <image width="128" height="128" source="tile/spring/ground-corner-top-left.png"/>
   </tile>
   <tile id="9">
-   <image width="128" height="128" source="tile/ground-corner-top-right.png"/>
+   <image width="128" height="128" source="tile/spring/ground-corner-top-right.png"/>
   </tile>
   <tile id="10">
-   <image width="128" height="128" source="tile/ground-left.png"/>
+   <image width="128" height="128" source="tile/spring/ground-left.png"/>
   </tile>
  </tileset>
  <layer id="4" name="ground" width="40" height="20">
   <data encoding="csv">
-19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,
-19,19,19,19,16,16,16,16,16,16,19,19,19,19,16,16,16,16,19,19,19,19,16,16,16,16,16,16,16,16,19,19,16,16,16,16,19,19,19,19,
-19,19,19,19,0,0,0,0,0,0,0,0,19,19,0,0,0,0,0,0,19,19,0,0,0,0,0,0,0,0,19,19,0,0,0,0,19,19,19,19,
-19,19,19,19,0,0,0,0,0,0,0,0,19,19,0,0,0,0,0,0,19,19,0,0,0,0,0,0,0,0,19,19,0,0,0,0,19,19,19,19,
-19,19,19,19,0,0,20,15,15,21,0,0,19,19,15,21,0,0,20,15,19,19,0,0,20,15,15,21,0,0,19,19,15,21,0,0,19,19,19,19,
-19,19,19,19,0,0,17,19,19,19,0,0,17,19,19,19,0,0,17,19,19,18,0,0,19,19,19,19,0,0,17,19,19,19,0,0,19,19,19,19,
-19,19,19,19,0,0,0,0,19,19,0,0,0,0,19,19,0,0,0,0,0,0,0,0,19,19,0,0,0,0,0,0,19,19,0,0,19,19,19,19,
-19,19,19,19,0,0,0,0,19,19,0,0,0,0,17,18,0,0,0,0,0,0,0,0,19,19,0,0,0,0,0,0,19,19,0,0,19,19,19,19,
-19,19,19,19,15,21,0,0,19,19,15,21,0,0,0,0,0,0,20,15,15,15,15,15,19,19,0,0,20,21,0,0,17,18,0,0,19,19,19,19,
-19,19,19,19,19,18,0,0,19,19,19,19,0,0,0,0,0,0,17,19,19,19,19,19,19,19,0,0,19,19,0,0,0,0,0,0,19,19,19,19,
-19,19,19,19,0,0,0,0,19,19,0,0,0,0,20,21,0,0,0,0,19,19,0,0,19,19,15,15,19,19,0,0,0,0,0,0,19,19,19,19,
-19,19,19,19,0,0,0,0,19,19,0,0,0,0,19,19,0,0,0,0,19,19,0,0,17,19,19,19,19,19,15,15,15,15,15,15,19,19,19,19,
-19,19,19,19,0,0,20,15,19,19,15,15,15,15,19,19,15,15,15,15,19,19,0,0,0,0,0,0,19,19,16,19,19,19,19,19,19,19,19,19,
-19,19,19,19,0,0,19,19,19,19,19,19,19,19,19,19,19,19,19,19,19,18,0,0,0,0,0,0,19,19,0,0,0,0,0,0,19,19,19,19,
-19,19,19,19,0,0,19,19,0,0,0,0,0,0,0,0,19,19,0,0,0,0,0,0,20,15,15,15,19,19,0,0,0,0,0,0,19,19,19,19,
-19,19,19,19,0,0,17,18,0,0,0,0,0,0,0,0,17,18,0,0,0,0,0,0,17,19,19,19,19,18,0,0,0,0,0,0,19,19,19,19,
-19,19,19,19,0,0,0,0,0,0,20,15,15,21,0,0,0,0,0,0,20,21,0,0,0,0,0,0,0,0,0,0,0,0,0,0,19,19,19,19,
-19,19,19,19,0,0,0,0,0,0,19,19,19,19,0,0,0,0,0,0,19,19,0,0,0,0,0,0,0,0,0,0,0,0,0,0,19,19,19,19,
-19,19,19,19,15,15,15,15,15,15,16,16,16,16,15,15,15,15,15,15,16,16,15,15,15,15,15,15,15,15,15,15,15,15,15,15,19,19,19,19,
-19,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16
+8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,
+8,8,8,8,5,5,5,5,5,5,8,8,8,8,5,5,5,5,8,8,8,8,5,5,5,5,5,5,5,5,8,8,5,5,5,5,8,8,8,8,
+8,8,8,8,0,0,0,0,0,0,0,0,8,8,0,0,0,0,0,0,8,8,0,0,0,0,0,0,0,0,8,8,0,0,0,0,8,8,8,8,
+8,8,8,8,0,0,0,0,0,0,0,0,8,8,0,0,0,0,0,0,8,8,0,0,0,0,0,0,0,0,8,8,0,0,0,0,8,8,8,8,
+8,8,8,8,0,0,9,4,4,10,0,0,8,8,4,10,0,0,9,4,8,8,0,0,9,4,4,10,0,0,8,8,4,10,0,0,8,8,8,8,
+8,8,8,8,0,0,6,8,8,8,0,0,6,8,8,8,0,0,6,8,8,7,0,0,8,8,8,8,0,0,6,8,8,8,0,0,8,8,8,8,
+8,8,8,8,0,0,0,0,8,8,0,0,0,0,8,8,0,0,0,0,0,0,0,0,8,8,0,0,0,0,0,0,8,8,0,0,8,8,8,8,
+8,8,8,8,0,0,0,0,8,8,0,0,0,0,6,7,0,0,0,0,0,0,0,0,8,8,0,0,0,0,0,0,8,8,0,0,8,8,8,8,
+8,8,8,8,4,10,0,0,8,8,4,10,0,0,0,0,0,0,9,4,4,4,4,4,8,8,0,0,9,10,0,0,6,7,0,0,8,8,8,8,
+8,8,8,8,8,7,0,0,8,8,8,8,0,0,0,0,0,0,6,8,8,8,8,8,8,8,0,0,8,8,0,0,0,0,0,0,8,8,8,8,
+8,8,8,8,0,0,0,0,8,8,0,0,0,0,9,10,0,0,0,0,8,8,0,0,8,8,4,4,8,8,0,0,0,0,0,0,8,8,8,8,
+8,8,8,8,0,0,0,0,8,8,0,0,0,0,8,8,0,0,0,0,8,8,0,0,6,8,8,8,8,8,4,4,4,4,4,4,8,8,8,8,
+8,8,8,8,0,0,9,4,8,8,4,4,4,4,8,8,4,4,4,4,8,8,0,0,0,0,0,0,8,8,5,8,8,8,8,8,8,8,8,8,
+8,8,8,8,0,0,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,7,0,0,0,0,0,0,8,8,0,0,0,0,0,0,8,8,8,8,
+8,8,8,8,0,0,8,8,0,0,0,0,0,0,0,0,8,8,0,0,0,0,0,0,9,4,4,4,8,8,0,0,0,0,0,0,8,8,8,8,
+8,8,8,8,0,0,6,7,0,0,0,0,0,0,0,0,6,7,0,0,0,0,0,0,6,8,8,8,8,7,0,0,0,0,0,0,8,8,8,8,
+8,8,8,8,0,0,0,0,0,0,9,4,4,10,0,0,0,0,0,0,9,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,8,8,
+8,8,8,8,0,0,0,0,0,0,8,8,8,8,0,0,0,0,0,0,8,8,0,0,0,0,0,0,0,0,0,0,0,0,0,0,8,8,8,8,
+8,8,8,8,4,4,4,4,4,4,5,5,5,5,4,4,4,4,4,4,5,5,4,4,4,4,4,4,4,4,4,4,4,4,4,4,8,8,8,8,
+8,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5
 </data>
  </layer>
 </map>

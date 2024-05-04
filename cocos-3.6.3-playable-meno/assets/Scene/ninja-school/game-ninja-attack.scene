@@ -162,7 +162,7 @@
     "_priority": 1,
     "_fov": 45,
     "_fovAxis": 0,
-    "_orthoHeight": 1341.1055276381908,
+    "_orthoHeight": 795.7299843014129,
     "_near": 1,
     "_far": 1000,
     "_color": {
@@ -4643,17 +4643,32 @@
     "__prefab": null,
     "lockX": true,
     "lockY": true,
-    "limit": false,
-    "maxX": 999,
-    "minX": -999,
-    "maxY": 525,
-    "minY": -545,
     "smoothTime": 0.1,
-    "player": {
-      "__id__": 138
+    "offset": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
     },
+    "othorScreen": true,
+    "othorLandscape": 1,
+    "othorPortrait": 2.5,
+    "limit": false,
+    "limitMax": {
+      "__type__": "cc.Vec2",
+      "x": 1000,
+      "y": 1000
+    },
+    "limitMin": {
+      "__type__": "cc.Vec2",
+      "x": -1000,
+      "y": -1000
+    },
+    "paralax": true,
     "background": {
       "__id__": 131
+    },
+    "player": {
+      "__id__": 138
     },
     "_id": "56JUr9rgpNW6uDavNkM5Tr"
   },
@@ -4680,7 +4695,8 @@
     "fileId": "bbjQzl/bFPR6V8L/Anbl7R",
     "instance": {
       "__id__": 140
-    }
+    },
+    "targetOverrides": []
   },
   {
     "__type__": "cc.PrefabInstance",

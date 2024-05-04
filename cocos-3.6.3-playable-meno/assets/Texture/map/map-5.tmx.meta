@@ -1,1 +1,12 @@
-{"ver":"1.0.2","importer":"tiled-map","imported":true,"uuid":"c4e24c56-9b53-4d2a-9757-cf13b3d0583e","files":[".json",".tmx"],"subMetas":{},"userData":{}}
+{
+  "ver": "1.0.2",
+  "importer": "tiled-map",
+  "imported": true,
+  "uuid": "c4e24c56-9b53-4d2a-9757-cf13b3d0583e",
+  "files": [
+    ".json",
+    ".tmx"
+  ],
+  "subMetas": {},
+  "userData": {}
+}
