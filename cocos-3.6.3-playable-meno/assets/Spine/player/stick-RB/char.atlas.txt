@@ -1,278 +1,194 @@
 
 char.png
-size: 645, 390
+size: 614, 390
 format: RGBA8888
 filter: Linear, Linear
 repeat: none
-0/body
-  rotate: false
-  xy: 588, 163
-  size: 28, 50
-  orig: 28, 50
-  offset: 0, 0
-  index: -1
-0/hand_L_1
-  rotate: false
-  xy: 618, 361
-  size: 25, 27
-  orig: 25, 27
-  offset: 0, 0
-  index: -1
-0/hand_L_2
-  rotate: false
-  xy: 618, 330
-  size: 22, 29
-  orig: 22, 29
-  offset: 0, 0
-  index: -1
-0/hand_R_1
-  rotate: false
-  xy: 618, 234
-  size: 17, 32
-  orig: 17, 32
-  offset: 0, 0
-  index: -1
-0/hand_R_2
-  rotate: false
-  xy: 513, 13
-  size: 30, 19
-  orig: 30, 19
-  offset: 0, 0
-  index: -1
-0/head
-  rotate: false
-  xy: 384, 104
-  size: 100, 100
-  orig: 100, 100
-  offset: 0, 0
-  index: -1
-0/leg_L_1
-  rotate: false
-  xy: 561, 3
-  size: 12, 29
-  orig: 12, 29
-  offset: 0, 0
-  index: -1
-0/leg_L_2
-  rotate: false
-  xy: 369, 26
-  size: 13, 27
-  orig: 13, 27
-  offset: 0, 0
-  index: -1
-0/leg_L_3
-  rotate: false
-  xy: 246, 16
-  size: 17, 8
-  orig: 17, 8
-  offset: 0, 0
-  index: -1
-0/leg_R_1
-  rotate: false
-  xy: 618, 135
-  size: 14, 29
-  orig: 14, 29
-  offset: 0, 0
-  index: -1
-0/leg_R_2
-  rotate: false
-  xy: 618, 106
-  size: 14, 27
-  orig: 14, 27
-  offset: 0, 0
-  index: -1
-0/leg_R_3
-  rotate: false
-  xy: 246, 6
-  size: 17, 8
-  orig: 17, 8
-  offset: 0, 0
-  index: -1
 2/body
   rotate: false
-  xy: 588, 111
+  xy: 527, 187
   size: 28, 50
   orig: 28, 50
   offset: 0, 0
   index: -1
 2/hand_L_1
   rotate: false
-  xy: 486, 5
+  xy: 587, 210
   size: 25, 27
   orig: 25, 27
   offset: 0, 0
   index: -1
 2/hand_L_2
   rotate: false
-  xy: 618, 299
+  xy: 527, 156
   size: 22, 29
   orig: 22, 29
   offset: 0, 0
   index: -1
 2/hand_R_1
   rotate: false
-  xy: 618, 200
+  xy: 591, 356
   size: 17, 32
   orig: 17, 32
   offset: 0, 0
   index: -1
 2/hand_R_2
   rotate: false
-  xy: 273, 34
+  xy: 513, 37
   size: 30, 19
   orig: 30, 19
   offset: 0, 0
   index: -1
 2/head
   rotate: false
-  xy: 486, 113
+  xy: 425, 137
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
 2/leg_L_1
   rotate: false
-  xy: 575, 80
+  xy: 411, 175
   size: 12, 29
   orig: 12, 29
   offset: 0, 0
   index: -1
 2/leg_L_2
   rotate: false
-  xy: 589, 53
+  xy: 248, 2
   size: 13, 27
   orig: 13, 27
   offset: 0, 0
   index: -1
 2/leg_L_3
   rotate: false
-  xy: 513, 3
+  xy: 527, 146
   size: 17, 8
   orig: 17, 8
   offset: 0, 0
   index: -1
 2/leg_R_1
   rotate: false
-  xy: 545, 3
+  xy: 591, 291
   size: 14, 29
   orig: 14, 29
   offset: 0, 0
   index: -1
 2/leg_R_2
   rotate: false
-  xy: 337, 26
+  xy: 216, 2
   size: 14, 27
   orig: 14, 27
   offset: 0, 0
   index: -1
 2/leg_R_3
   rotate: false
-  xy: 273, 24
+  xy: 577, 48
   size: 17, 8
   orig: 17, 8
   offset: 0, 0
   index: -1
 body
   rotate: false
-  xy: 216, 3
+  xy: 557, 187
   size: 28, 50
   orig: 28, 50
   offset: 0, 0
   index: -1
 hand_L_1
   rotate: false
-  xy: 246, 26
+  xy: 587, 181
   size: 25, 27
   orig: 25, 27
   offset: 0, 0
   index: -1
 hand_L_2
   rotate: false
-  xy: 618, 268
+  xy: 551, 156
   size: 22, 29
   orig: 22, 29
   offset: 0, 0
   index: -1
 hand_R_1
   rotate: false
-  xy: 618, 166
+  xy: 591, 322
   size: 17, 32
   orig: 17, 32
   offset: 0, 0
   index: -1
 hand_R_2
   rotate: false
-  xy: 305, 34
+  xy: 545, 37
   size: 30, 19
   orig: 30, 19
   offset: 0, 0
   index: -1
 head
   rotate: false
-  xy: 384, 2
+  xy: 411, 35
   size: 100, 100
   orig: 100, 100
   offset: 0, 0
   index: -1
 leg_L_1
   rotate: false
-  xy: 575, 49
+  xy: 411, 144
   size: 12, 29
   orig: 12, 29
   offset: 0, 0
   index: -1
 leg_L_2
   rotate: false
-  xy: 575, 20
+  xy: 263, 2
   size: 13, 27
   orig: 13, 27
   offset: 0, 0
   index: -1
 leg_L_3
   rotate: false
-  xy: 292, 24
+  xy: 278, 21
   size: 17, 8
   orig: 17, 8
   offset: 0, 0
   index: -1
 leg_R_1
   rotate: false
-  xy: 353, 24
+  xy: 591, 260
   size: 14, 29
   orig: 14, 29
   offset: 0, 0
   index: -1
 leg_R_2
   rotate: false
-  xy: 589, 82
+  xy: 232, 2
   size: 14, 27
   orig: 14, 27
   offset: 0, 0
   index: -1
 leg_R_3
   rotate: false
-  xy: 311, 24
+  xy: 546, 146
   size: 17, 8
   orig: 17, 8
   offset: 0, 0
   index: -1
 vd_1
   rotate: false
-  xy: 486, 34
+  xy: 513, 58
   size: 87, 77
   orig: 214, 192
   offset: 58, 59
   index: -1
 vd_2
   rotate: false
-  xy: 218, 55
+  xy: 425, 239
   size: 164, 149
   orig: 214, 192
   offset: 25, 22
   index: -1
 vd_3
   rotate: false
-  xy: 425, 215
+  xy: 218, 31
   size: 191, 173
   orig: 214, 192
   offset: 13, 7
