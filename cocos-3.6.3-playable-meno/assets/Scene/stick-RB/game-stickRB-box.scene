@@ -5149,7 +5149,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Pipe",
+    "_name": "pipe",
     "_objFlags": 0,
     "_parent": {
       "__id__": 47
