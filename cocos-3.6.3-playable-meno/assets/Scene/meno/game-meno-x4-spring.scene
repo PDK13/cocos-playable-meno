@@ -71,8 +71,8 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 960.0000000000001,
-      "y": 540,
+      "x": 207.0000000000001,
+      "y": 368,
       "z": 0
     },
     "_lrot": {
@@ -153,7 +153,7 @@
     "_priority": 1,
     "_fov": 45,
     "_fovAxis": 0,
-    "_orthoHeight": 841.8927444794953,
+    "_orthoHeight": 368,
     "_near": 1,
     "_far": 1000,
     "_color": {
@@ -220,7 +220,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -440,
+      "y": -268,
       "z": 0
     },
     "_lrot": {
@@ -269,7 +269,7 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -310,
+      "x": 443,
       "y": 100,
       "z": 0
     },
@@ -474,7 +474,7 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -735,
+      "x": 18,
       "y": 100,
       "z": 0
     },
@@ -679,7 +679,7 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 735,
+      "x": -18,
       "y": 100,
       "z": 0
     },
@@ -1076,7 +1076,7 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 1920,
+      "width": 414,
       "height": 200
     },
     "_anchorPoint": {
@@ -2018,8 +2018,8 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 1920,
-      "height": 1080
+      "width": 414,
+      "height": 736
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2040,8 +2040,8 @@
     "loop": false,
     "loopTimeOut": false,
     "directStore": false,
-    "androidLink": "https://play.google.com/store/apps/details?id=com.mgif.merino.adventure",
-    "iosLink": "https://apps.apple.com/us/app/rub-adventure-mystery-island/id6463469441",
+    "androidLink": "https://play.google.com/store/apps/details?id=com.miracle.boy.jungle.adventure",
+    "iosLink": "",
     "adsType": 0,
     "panelComplete": {
       "__id__": 33
@@ -2920,17 +2920,47 @@
     "__prefab": null,
     "lockX": false,
     "lockY": false,
-    "limit": false,
-    "maxX": 999,
-    "minX": -999,
-    "maxY": 999,
-    "minY": -999,
     "smoothTime": 0.1,
-    "player": {
-      "__id__": 87
+    "offset": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
     },
+    "othorScreen": true,
+    "othorLandscape": 1,
+    "othorPortrait": 2.5,
+    "rectScreen": false,
+    "rectLandScape": {
+      "__type__": "cc.Rect",
+      "x": 0,
+      "y": 0,
+      "width": 1,
+      "height": 1
+    },
+    "rectPortrait": {
+      "__type__": "cc.Rect",
+      "x": 0,
+      "y": 0.25,
+      "width": 1,
+      "height": 0.5
+    },
+    "limit": false,
+    "limitMax": {
+      "__type__": "cc.Vec2",
+      "x": 1000,
+      "y": 1000
+    },
+    "limitMin": {
+      "__type__": "cc.Vec2",
+      "x": -1000,
+      "y": -1000
+    },
+    "paralax": true,
     "background": {
       "__id__": 64
+    },
+    "player": {
+      "__id__": 87
     },
     "_id": "56JUr9rgpNW6uDavNkM5Tr"
   },
@@ -8896,8 +8926,8 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 1920,
-      "height": 1080
+      "width": 414,
+      "height": 736
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
