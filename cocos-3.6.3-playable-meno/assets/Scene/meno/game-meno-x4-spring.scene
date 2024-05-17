@@ -153,7 +153,7 @@
     "_priority": 1,
     "_fov": 45,
     "_fovAxis": 0,
-    "_orthoHeight": 621.294363256785,
+    "_orthoHeight": 742.87166454892,
     "_near": 1,
     "_far": 1000,
     "_color": {
@@ -2098,7 +2098,7 @@
     "loop": false,
     "loopTimeOut": false,
     "directStore": false,
-    "androidLink": "https://play.google.com/store/apps/details?id=com.miracle.boy.jungle.adventure",
+    "androidLink": "https://play.google.com/store/apps/details?id=com.mystery.island.run.jungle.adventure&gl=us",
     "iosLink": "",
     "adsType": 0,
     "panelComplete": {
