@@ -15,15 +15,20 @@ export class BaseArrow extends Component {
     @property([Node])
     Arrow: Node[] = [];
 
+    @property([Node])
+    UI: Node[] = [];
+
     @property(CameraMovement)
     camera: CameraMovement = null;
 
     playerCurrent: PlayerController = null;
     arrowCurrent: Node = null;
+    uiCurrent: Node = null;
 
     start() {
         this.playerCurrent = this.Player[0];
         this.arrowCurrent = this.Arrow[0];
+        this.uiCurrent = this.UI[0];
         //
         this.Player[0].Control
         for (let index = 1; index < this.Player.length; index++)
@@ -32,6 +37,10 @@ export class BaseArrow extends Component {
         this.Arrow[0].active = true;
         for (let index = 1; index < this.Arrow.length; index++)
             this.Arrow[index].active = false;
+        //
+        this.UI[0].active = true;
+        for (let index = 1; index < this.UI.length; index++)
+            this.UI[index].active = false;
         //
         this.camera.onTargetSwitch(this.playerCurrent.node);
         //
@@ -51,11 +60,15 @@ export class BaseArrow extends Component {
     private onSwitch(SwitchIndex: number) {
         this.playerCurrent.Control = false;
         this.arrowCurrent.active = false;
+        this.uiCurrent.active = false;
         //
         this.playerCurrent = this.Player[SwitchIndex];
         this.arrowCurrent = this.Arrow[SwitchIndex];
+        this.uiCurrent = this.UI[SwitchIndex];
+        //
         this.playerCurrent.Control = true;
         this.arrowCurrent.active = true;
+        this.uiCurrent.active = true;
         //
         this.camera.onTargetSwitch(this.playerCurrent.node);
     }

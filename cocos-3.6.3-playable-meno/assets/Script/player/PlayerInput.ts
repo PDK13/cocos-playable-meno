@@ -24,14 +24,20 @@ export class PlayerInput extends Component {
     @property(Node)
     buttonFire: Node = null;
 
+    @property(Node)
+    buttonSwitch: Node = null;
+
     m_keyLeftActive: boolean = false;
     m_keyRightActive: boolean = false;
     m_jumpActive: boolean = false;
     m_fireActive: boolean = false;
+    m_switchRB: number = 0;
 
     onLoad () {
-        if(this.directStore)            
+        if(this.directStore) {
+
             return;
+        }           
         if(this.loop)
         {            
             this.buttonRight.getChildByName('hand').active = Loader.finish;
@@ -56,6 +62,8 @@ export class PlayerInput extends Component {
         this.buttonFire.on(Input.EventType.TOUCH_START, this.onFireStart, this);
         this.buttonFire.on(Input.EventType.TOUCH_END, this.onFireEnd, this);
         this.buttonFire.on(Input.EventType.TOUCH_CANCEL, this.onFireEnd, this);
+
+        this.buttonSwitch.on(Input.EventType.TOUCH_START, this.onSwitchRB, this);
     }
 
     onJumpStart()
@@ -164,6 +172,10 @@ export class PlayerInput extends Component {
         if(this.m_fireActive)
             director.emit(GameEvent.PLAYER_FIRE, true);
     }
+
+    onSwitchRB()
+    {
+        this.m_switchRB = this.m_switchRB == 0 ? 1 : 0;
+        director.emit(GameEvent.PLAYER_SWITCH, this.m_switchRB);
+    }
 }
-
-

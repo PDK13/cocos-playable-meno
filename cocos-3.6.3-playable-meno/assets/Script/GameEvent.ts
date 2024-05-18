@@ -20,4 +20,5 @@ export default class GameEvent  {
     static PLAYER_FLAG = 'PLAYER_FLAG';
     static FINISH_FLAG = 'FINISH_FAG';
     static TIMER_OUT = "TIMER_FINISH";
+    static PLAYER_SWITCH = "PLAYER_SWITCH";
 }

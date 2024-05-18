@@ -331,7 +331,11 @@ export class PlayerControllerMeno extends PlayerController {
     }
 
     onPlayerMoveLeft() {
-        if (this.m_finish || this.m_lockInput || !this.m_control)
+        if (!this.m_control) {
+            this.onPlayerMoveStop();
+            return;
+        }
+        if (this.m_finish || this.m_lockInput)
             return;
         if (this.m_spine.spine._skeleton.scaleX > 0)
             this.m_currentTarget = null;
@@ -340,7 +344,11 @@ export class PlayerControllerMeno extends PlayerController {
     }
 
     onPlayerMoveRight() {
-        if (this.m_finish || this.m_lockInput || !this.m_control)
+        if (!this.m_control) {
+            this.onPlayerMoveStop();
+            return;
+        }
+        if (this.m_finish || this.m_lockInput)
             return;
         if (this.m_spine.spine._skeleton.scaleX < 0)
             this.m_currentTarget = null;
