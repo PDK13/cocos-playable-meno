@@ -26,7 +26,7 @@ export class BaseObjectTrigger extends Component {
                 this.m_playerTrigger++;
                 if (!this.mutiTrigger && this.m_playerTrigger > 1)
                     return;
-                director.emit(BaseObjectTrigger.OBJECT_TRIGGER, this);
+                director.emit(BaseObjectTrigger.OBJECT_TRIGGER, this, true);
                 break;
         }
     }
@@ -37,7 +37,7 @@ export class BaseObjectTrigger extends Component {
                 this.m_playerTrigger--;
                 if (!this.mutiTrigger && this.m_playerTrigger > 0)
                     return;
-                director.emit(BaseObjectTrigger.OBJECT_TRIGGER, this);
+                director.emit(BaseObjectTrigger.OBJECT_TRIGGER, this, false);
                 break;
         }
     }
