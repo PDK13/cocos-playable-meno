@@ -1,6 +1,6 @@
 import { _decorator, AudioSource, BoxCollider2D, CCFloat, CCString, Collider2D, Component, director, instantiate, Node, PhysicsSystem2D, RigidBody2D, sp, tween, v2, v3, Vec2, Vec3 } from 'cc';
 import GameEvent from '../GameEvent';
-import { PlayerState } from './PlayerControllerMeno';
+import { PlayerState } from './PlayerController';
 const { ccclass, property } = _decorator;
 
 @ccclass('PetController')

@@ -1,7 +1,7 @@
 import { _decorator, CCFloat, Component, director, Node, v3, Vec3 } from 'cc';
-import { PlayerController } from '../player/PlayerController';
 import GameEvent from '../GameEvent';
 import CameraMovement from '../game/CameraMovement';
+import { BasePlayer } from './BasePlayer';
 const { ccclass, property } = _decorator;
 
 @ccclass('BaseArrow')
@@ -9,8 +9,8 @@ export class BaseArrow extends Component {
     @property(CCFloat)
     offsetPosY: number = 40;
 
-    @property([PlayerController])
-    Player: PlayerController[] = [];
+    @property([BasePlayer])
+    Player: BasePlayer[] = [];
 
     @property([Node])
     Arrow: Node[] = [];
@@ -21,7 +21,7 @@ export class BaseArrow extends Component {
     @property(CameraMovement)
     camera: CameraMovement = null;
 
-    playerCurrent: PlayerController = null;
+    playerCurrent: BasePlayer = null;
     arrowCurrent: Node = null;
     uiCurrent: Node = null;
 

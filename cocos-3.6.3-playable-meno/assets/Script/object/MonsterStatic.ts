@@ -1,5 +1,5 @@
 import { _decorator, AudioSource, Collider2D, Component, Contact2DType, director, IPhysics2DContact, Node, RigidBody2D, sp, tween, v2, v3 } from 'cc';
-import { PlayerControllerMeno } from '../player/PlayerControllerMeno';
+import { PlayerController } from '../player/PlayerController';
 import GameEvent from '../GameEvent';
 const { ccclass, property } = _decorator;
 
@@ -34,7 +34,7 @@ export class MonsterStatic extends Component {
             case 100://player              
                 let direction = worldPos.subtract( otherCollider.node.worldPosition);
                 let directionV2 = v2(direction.x, direction.y);
-                let player = otherCollider.node.getComponent(PlayerControllerMeno);                 
+                let player = otherCollider.node.getComponent(PlayerController);                 
                 if(player != null)      
                 {
                     if(player.isBig)

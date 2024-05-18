@@ -1,5 +1,5 @@
 import { _decorator, AudioSource, BoxCollider2D, Collider2D, Component, Contact2DType, IPhysics2DContact, Node, RigidBody2D, tween, v3 } from 'cc';
-import { PlayerControllerMeno } from '../player/PlayerControllerMeno';
+import { PlayerController } from '../player/PlayerController';
 const { ccclass, property } = _decorator;
 
 @ccclass('ObjectPip')
@@ -21,7 +21,7 @@ export class ObjectPip extends Component {
     {
         if(this.m_stop)
             return;
-        let player = otherCollider.getComponent(PlayerControllerMeno);
+        let player = otherCollider.getComponent(PlayerController);
         if(!player)
             return
         if(otherCollider.tag == 100 && player.isBig)

@@ -1,5 +1,5 @@
 import { _decorator, AudioSource, CCFloat, Collider2D, Component, Contact2DType, director, ERigidBody2DType, IPhysics2DContact, Node, RigidBody2D, sp, tween, v2, v3, Vec2 } from 'cc';
-import { PlayerControllerMeno } from '../player/PlayerControllerMeno';
+import { PlayerController } from '../player/PlayerController';
 import GameEvent from '../GameEvent';
 const { ccclass, property } = _decorator;
 
@@ -60,7 +60,7 @@ export class MonsterGround extends Component {
                 break;
             case 100://player 
             case 102: 
-                let player = otherCollider.node.getComponent(PlayerControllerMeno); 
+                let player = otherCollider.node.getComponent(PlayerController); 
                 if(player != null)
                 {
                     let direction = worldPos.subtract(otherCollider.node.worldPosition);   

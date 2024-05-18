@@ -1,6 +1,6 @@
 import { _decorator, AudioClip, AudioSource, BoxCollider2D, Collider2D, Component, Contact2DType, director, Enum, instantiate, IPhysics2DContact, Node, Prefab, RigidBody2D, sp, tween, v3 } from 'cc';
 import GameEvent from '../GameEvent';
-import { PlayerControllerMeno } from '../player/PlayerControllerMeno';
+import { PlayerController } from '../player/PlayerController';
 const { ccclass, property } = _decorator;
 
 export enum BrickType
@@ -54,7 +54,7 @@ export class ObjectBlockBrick extends Component {
 
     onBeginContact (selfCollider: Collider2D, otherCollider: Collider2D, contact: IPhysics2DContact | null) 
     {              
-        let player = otherCollider.getComponent(PlayerControllerMeno);
+        let player = otherCollider.getComponent(PlayerController);
         switch(otherCollider.tag)
         {
             case 100://player                        

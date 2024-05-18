@@ -1,6 +1,5 @@
 import { _decorator, Collider2D, Component, Contact2DType, director, IPhysics2DContact, Node, RigidBody2D } from 'cc';
-import GameEvent from '../../GameEvent';
-import { PlayerController } from '../../player/PlayerController';
+import { BasePlayer } from '../BasePlayer';
 const { ccclass, property } = _decorator;
 
 @ccclass('ItemX2')
@@ -21,7 +20,7 @@ export class ItemX2 extends Component {
             case 100://player     
                 this.m_stop = true;
                 setTimeout(() => {
-                    otherCollider.getComponent(PlayerController).onX2(true);
+                    otherCollider.getComponent(BasePlayer).onX2(true);
                     this.getComponent(RigidBody2D).sleep();
                     this.node.destroy();
                 }, 1);
