@@ -2,8 +2,8 @@ import { _decorator, Collider2D, Component, Contact2DType, director, IPhysics2DC
 import { BasePlayer } from './BasePlayer';
 const { ccclass, property } = _decorator;
 
-@ccclass('BasePlayerItemX2')
-export class BasePlayerItemX2 extends Component {
+@ccclass('BaseItemX2')
+export class BaseItemX2 extends Component {
 
     m_stop: boolean = false;
 
