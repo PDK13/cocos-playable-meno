@@ -2,6 +2,7 @@ import { _decorator, Node, AudioSource, Component, Vec2, director, RigidBody2D, 
 import GameEvent from '../GameEvent';
 import { BaseSpine } from '../base/BaseSpine';
 import { BasePlayer } from '../base/BasePlayer';
+import { BaseObject } from '../base/BaseObject';
 const { ccclass, property } = _decorator;
 const { spine } = sp;
 
@@ -36,6 +37,9 @@ export class PlayerController extends Component {
 
     @property(CCString)
     animAirOff: string = 'air_off';
+
+    @property(CCString)
+    animFinish: string = 'door_1';
 
     @property(CCFloat)
     xDamping = 40;
@@ -149,12 +153,13 @@ export class PlayerController extends Component {
                     this.m_botCollider = c as BoxCollider2D;
                     break;
             }
+            c.on(Contact2DType.BEGIN_CONTACT, this.onBeginContact, this);
+            c.on(Contact2DType.END_CONTACT, this.onBeginContact, this);
         });
         // if (PhysicsSystem2D.instance) {
         //     PhysicsSystem2D.instance.on(Contact2DType.BEGIN_CONTACT, this.onBeginContact, this);
         //     //PhysicsSystem2D.instance.on(Contact2DType.END_CONTACT, this.onEndContact, this);
         // }
-
     }
 
     start() {
@@ -211,8 +216,6 @@ export class PlayerController extends Component {
         }, 1);
         this.m_big = active;
     }
-
-    
 
     get isBig() {
         return this.m_big;
@@ -428,17 +431,21 @@ export class PlayerController extends Component {
         let posX = this.node.worldPosition.x;
         let time = Math.abs(posX - this.m_finishPos.x) / 1000;
         let obj = { x: posX };
-        tween(obj).to(time, { x: this.m_finishPos.x }, {
-            onUpdate: (t, ratio: number) => {
-                let worldPos = this.node.worldPosition.clone();
-                worldPos.x = t.x;
-                this.node.worldPosition = worldPos;
-            }
-        }).call(() => {
-            this.m_spine.SetAnim('door_1', true);
-        }).delay(2).call(() => {
-            director.emit(GameEvent.GAME_FINISH);
-        }).start();
+        tween(obj)
+            .to(time, { x: this.m_finishPos.x }, {
+                onUpdate: (t, ratio: number) => {
+                    let worldPos = this.node.worldPosition.clone();
+                    worldPos.x = t.x;
+                    this.node.worldPosition = worldPos;
+                }
+            })
+            .call(() => {
+                this.m_spine.SetAnim(this.animFinish, true);
+            })
+            .delay(2).call(() => {
+                director.emit(GameEvent.GAME_FINISH);
+            })
+            .start();
     }
 
     addForceY(force: number) {
@@ -504,17 +511,21 @@ export class PlayerController extends Component {
         this.m_spine.SetAnim(this.animIdle, true);
     }
 
-    // onBeginContact (selfCollider: Collider2D, otherCollider: Collider2D, contact: IPhysics2DContact | null) {
-    //     if(otherCollider.tag != 200)
-    //         return;    
-    //     this.m_targets.push(otherCollider.node);    
-    // }
+    onBeginContact(selfCollider: Collider2D, otherCollider: Collider2D, contact: IPhysics2DContact | null) {
+        if (this.m_player.m_x2 || this.m_player.m_x4) {
+            let ObjectCheck = otherCollider.getComponent(BaseObject);
+            if (ObjectCheck != null) {
+                //otherCollider.destroy();
+                //
+                let FlyDir = this.node.worldPosition.x < otherCollider.node.worldPosition.x ? 1 : -1;
+                let FlyOffset = new Vec3(FlyDir * 5000, 5000);
+                let FlyPos = otherCollider.node.position.clone().add(FlyOffset.clone());
+                ObjectCheck.onTweenMove(new Vec2(FlyPos.x, FlyPos.y), 1);
+            }
+        }
+    }
 
-    // onEndContact (selfCollider: Collider2D, otherCollider: Collider2D, contact: IPhysics2DContact | null) {
-    //     if(otherCollider.tag != 200)
-    //         return;
-    //     let index = this.m_targets.indexOf(otherCollider.node);
-    //     if(index > -1)
-    //         this.m_targets.splice(index, 1);
-    // }    
+    onEndContact(selfCollider: Collider2D, otherCollider: Collider2D, contact: IPhysics2DContact | null) {
+
+    }
 }
