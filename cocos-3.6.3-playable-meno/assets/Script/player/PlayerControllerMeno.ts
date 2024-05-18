@@ -24,6 +24,21 @@ export class PlayerControllerMeno extends PlayerController {
     @property(CCString)
     growSkin = "2_grow";
 
+    @property(CCString)
+    animIdle: string = 'idle';
+
+    @property(CCString)
+    animMove: string = 'run';
+
+    @property(CCString)
+    animJumpUp: string = 'jump_up';
+
+    @property(CCString)
+    animAirOn: string = 'air_on';
+
+    @property(CCString)
+    animAirOff: string = 'air_off';
+
     @property(CCFloat)
     xDamping = 40;
 
@@ -252,7 +267,7 @@ export class PlayerControllerMeno extends PlayerController {
 
     onJump(dt: number) {
         this.m_activeJumpInput = true;
-        if (this.m_finish || this.m_lockInput || this.m_lockJump)
+        if (this.m_finish || this.m_lockInput || this.m_lockJump || !this.m_control)
             return;
         if (this.m_jumpTimeCounter <= 0) {
             this.m_lockJump = true;
@@ -316,21 +331,21 @@ export class PlayerControllerMeno extends PlayerController {
     }
 
     onPlayerMoveLeft() {
-        if (this.m_finish || this.m_lockInput)
+        if (this.m_finish || this.m_lockInput || !this.m_control)
             return;
         if (this.m_spine.spine._skeleton.scaleX > 0)
             this.m_currentTarget = null;
         this.m_moveDirection = -1;
-        this.m_spine.spine._skeleton.scaleX = -this.m_spineScaleX;
+        this.m_spine.spine._skeleton.scaleX = this.m_moveDirection;
     }
 
     onPlayerMoveRight() {
-        if (this.m_finish || this.m_lockInput)
+        if (this.m_finish || this.m_lockInput || !this.m_control)
             return;
         if (this.m_spine.spine._skeleton.scaleX < 0)
             this.m_currentTarget = null;
         this.m_moveDirection = 1;
-        this.m_spine.spine._skeleton.scaleX = this.m_spineScaleX;
+        this.m_spine.spine._skeleton.scaleX = this.m_moveDirection;
     }
 
     onPlayerMoveStop() {
@@ -342,7 +357,7 @@ export class PlayerControllerMeno extends PlayerController {
 
     onPlayerStop(position: Vec3) {
         this.stopFire();
-        this.m_spine.SetAnim('run', true);
+        this.m_spine.SetAnim(this.animMove, true);
         this.finishAudio.play();
         this.m_finishPos = position.clone();
         this.finish();
@@ -443,23 +458,23 @@ export class PlayerControllerMeno extends PlayerController {
         switch (Number(state)) {
             case PlayerState.IDLE:
                 if (this.m_state == PlayerState.AIR) {
-                    let duration = this.m_spine.SetAnim('air_off', false);
+                    let duration = this.m_spine.SetAnim(this.animAirOff, false);
                     this.scheduleOnce(this.onTransitionIdle, duration);
                 } else
-                    this.m_spine.SetAnim('idle', true);
+                    this.m_spine.SetAnim(this.animIdle, true);
                 break;
             case PlayerState.MOVE:
-                this.m_spine.SetAnim('run', true);
+                this.m_spine.SetAnim(this.animMove, true);
                 break;
             case PlayerState.JUMP:
-                let duration = this.m_spine.SetAnim('jump_up', false);
+                let duration = this.m_spine.SetAnim(this.animJumpUp, false);
                 this.jumpAudio.play();
                 setTimeout(() => {
-                    this.m_spine.SetAnim('air_on', true);
+                    this.m_spine.SetAnim(this.animAirOn, true);
                 }, duration);
                 break;
             case PlayerState.AIR:
-                this.m_spine.SetAnim('air_on', true);
+                this.m_spine.SetAnim(this.animAirOn, true);
                 break;
             case PlayerState.HURT:
                 break;
@@ -468,7 +483,7 @@ export class PlayerControllerMeno extends PlayerController {
     }
 
     onTransitionIdle() {
-        this.m_spine.SetAnim('idle', true);
+        this.m_spine.SetAnim(this.animIdle, true);
     }
 
     // onBeginContact (selfCollider: Collider2D, otherCollider: Collider2D, contact: IPhysics2DContact | null) {
