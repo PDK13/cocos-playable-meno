@@ -153,7 +153,7 @@
     "_priority": 1,
     "_fov": 45,
     "_fovAxis": 0,
-    "_orthoHeight": 677.9201934703749,
+    "_orthoHeight": 679.5636363636364,
     "_near": 1,
     "_far": 1000,
     "_color": {
@@ -7131,7 +7131,7 @@
     },
     "_enabled": true,
     "__prefab": null,
-    "_id": "41vuvTsehMsIN9dVkZP7fL"
+    "_id": "68Tv3sibJFUq+eAcMGIY6g"
   },
   {
     "__type__": "cc.RenderRoot2D",
