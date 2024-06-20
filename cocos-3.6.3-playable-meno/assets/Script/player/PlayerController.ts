@@ -3,6 +3,7 @@ import GameEvent from '../GameEvent';
 import { BaseSpine } from '../base/BaseSpine';
 import { BasePlayer } from '../base/BasePlayer';
 import { BaseObject } from '../base/BaseObject';
+import { BaseAnimation } from '../base/BaseAnimation';
 const { ccclass, property } = _decorator;
 const { spine } = sp;
 
@@ -106,6 +107,7 @@ export class PlayerController extends Component {
 
     m_rigidbody: RigidBody2D = null;
     m_spine: BaseSpine = null;
+    m_animation: BaseAnimation = null;
     m_player: BasePlayer = null;
 
     get isTall() {
@@ -119,6 +121,7 @@ export class PlayerController extends Component {
     onLoad() {
         this.m_rigidbody = this.getComponent(RigidBody2D);
         this.m_spine = this.getComponent(BaseSpine);
+        this.m_animation = this.getComponent(BaseAnimation);
         this.m_player = this.getComponent(BasePlayer);
         //
         this.m_baseScale = this.node.scale.clone();
@@ -166,8 +169,10 @@ export class PlayerController extends Component {
         this.m_baseMass = this.m_rigidbody.getMass();
         //
         this.onTall(false);
-
-        this.m_spineScaleX = this.m_spine.spine._skeleton.scaleX;
+        //
+        if (this.m_spine != null) {
+            this.m_spineScaleX = this.m_spine.spine._skeleton.scaleX;
+        }
         //
         this.m_jumpTimeCounter = this.m_jumpTime;
     }
@@ -183,21 +188,24 @@ export class PlayerController extends Component {
         this.m_rigidbody.linearVelocity = v2();
         this.m_rigidbody.gravityScale = 0;
         //
-        let duration = this.m_spine.SetAnim('1_leo_cot', false);
-        let basePos = this.node.getWorldPosition();
-        basePos.x += 100;
-        setTimeout(() => {
-            this.m_spine.SetAnim('1_leo_cot2', true);
-            if (this.isBig) {
-                tween(this.node).to(0.2, { scale: this.m_baseScale.clone(), worldPosition: basePos }).call(() => {
+        if (this.m_spine != null) {
+            let duration = this.m_spine.SetAnim('1_leo_cot', false);
+            let basePos = this.node.getWorldPosition();
+            basePos.x += 100;
+            setTimeout(() => {
+                this.m_spine.SetAnim('1_leo_cot2', true);
+                if (this.isBig) {
+                    tween(this.node).to(0.2, { scale: this.m_baseScale.clone(), worldPosition: basePos }).call(() => {
+                        this.m_rigidbody.gravityScale = 5;
+                        this.m_rigidbody.wakeUp();
+                    }).delay(0.01).start();
+                } else {
                     this.m_rigidbody.gravityScale = 5;
                     this.m_rigidbody.wakeUp();
-                }).delay(0.01).start();
-            } else {
-                this.m_rigidbody.gravityScale = 5;
-                this.m_rigidbody.wakeUp();
-            }
-        }, duration);
+                }
+            }, duration);
+        }
+        //
     }
 
     onFan(active: boolean) {
@@ -223,12 +231,16 @@ export class PlayerController extends Component {
 
     onTall(active: boolean) {
         this.m_isTall = active;
-        let skinData = this.m_spine.spine._skeleton.data.findSkin(active ? this.growSkin : this.defaultSkin);
-        let skin = new sp.spine.Skin('new-skin');
-        skin.addSkin(skinData);
-        this.m_spine.spine._skeleton.setSkin(skin);
-        this.m_spine.spine._skeleton.setSlotsToSetupPose();
-        this.m_spine.spine.getState().apply(this.m_spine.spine._skeleton);
+        //
+        if (this.m_spine != null) {
+            let skinData = this.m_spine.spine._skeleton.data.findSkin(active ? this.growSkin : this.defaultSkin);
+            let skin = new sp.spine.Skin('new-skin');
+            skin.addSkin(skinData);
+            this.m_spine.spine._skeleton.setSkin(skin);
+            this.m_spine.spine._skeleton.setSlotsToSetupPose();
+            this.m_spine.spine.getState().apply(this.m_spine.spine._skeleton);
+        }
+        //
         //update collider
         if (active) {
             if (this.isBig)
@@ -305,12 +317,16 @@ export class PlayerController extends Component {
     }
 
     fire() {
-        let duration = this.m_spine.SetAnimIndex(1, 'fight_1_mix', false);
-        this.m_spine.SetAnimIndex(2, 'aim', true);
-        this.scheduleOnce(() => {
-            if (this.m_fire)
-                this.fire();
-        }, duration);
+        //
+        if (this.m_spine != null) {
+            let duration = this.m_spine.SetAnimIndex(1, 'fight_1_mix', false);
+            this.m_spine.SetAnimIndex(2, 'aim', true);
+            this.scheduleOnce(() => {
+                if (this.m_fire)
+                    this.fire();
+            }, duration);
+        }
+        //
         this.scheduleOnce(() => {
             let bullet = instantiate(this.bulletSample);
             bullet.setParent(this.node.parent);
@@ -324,8 +340,12 @@ export class PlayerController extends Component {
 
     stopFire() {
         this.m_fire = false;
-        this.m_spine.SetAnimEmty(1, 0.1);
-        this.m_spine.SetAnimEmty(2, 0.1);
+        //
+        if (this.m_spine != null) {
+            this.m_spine.SetAnimEmty(1, 0.1);
+            this.m_spine.SetAnimEmty(2, 0.1);
+        }
+        //
     }
 
     onHurt() {
@@ -335,12 +355,16 @@ export class PlayerController extends Component {
         this.m_state = PlayerState.HURT;
         this.m_hurt = true;
         this.m_lockInput = true;
-        let duration = this.m_spine.SetAnim('hit', false);
+        //
+        if (this.m_spine != null) {
+            let duration = this.m_spine.SetAnim('hit', false);
+            this.scheduleOnce(() => {
+                this.m_lockInput = false;
+                this.m_hurt = false;
+            }, duration);
+        }
+        //
         this.hurtAudio.play();
-        this.scheduleOnce(() => {
-            this.m_lockInput = false;
-            this.m_hurt = false;
-        }, duration);
     }
 
     onPlayerMoveLeft() {
@@ -350,10 +374,14 @@ export class PlayerController extends Component {
         }
         if (this.m_finish || this.m_lockInput)
             return;
-        if (this.m_spine.spine._skeleton.scaleX > 0)
-            this.m_currentTarget = null;
+        //
+        if (this.m_spine != null) {
+            if (this.m_spine.spine._skeleton.scaleX > 0)
+                this.m_currentTarget = null;
+            this.m_spine.spine._skeleton.scaleX = this.m_moveDirection;
+        }
+        //
         this.m_moveDirection = -1;
-        this.m_spine.spine._skeleton.scaleX = this.m_moveDirection;
     }
 
     onPlayerMoveRight() {
@@ -363,10 +391,14 @@ export class PlayerController extends Component {
         }
         if (this.m_finish || this.m_lockInput)
             return;
-        if (this.m_spine.spine._skeleton.scaleX < 0)
-            this.m_currentTarget = null;
+        //
+        if (this.m_spine != null) {
+            if (this.m_spine.spine._skeleton.scaleX < 0)
+                this.m_currentTarget = null;
+            this.m_spine.spine._skeleton.scaleX = this.m_moveDirection;
+        }
+        //
         this.m_moveDirection = 1;
-        this.m_spine.spine._skeleton.scaleX = this.m_moveDirection;
     }
 
     onPlayerMoveStop() {
@@ -378,7 +410,12 @@ export class PlayerController extends Component {
 
     onPlayerStop(position: Vec3) {
         this.stopFire();
-        this.m_spine.SetAnim(this.animMove, true);
+        if (this.m_spine != null) {
+            this.m_spine.SetAnim(this.animMove, true);
+        }
+        if (this.m_animation != null) {
+            this.m_animation.SetPlay(this.animMove);
+        }
         this.finishAudio.play();
         this.m_finishPos = position.clone();
         this.finish();
@@ -440,7 +477,12 @@ export class PlayerController extends Component {
                 }
             })
             .call(() => {
-                this.m_spine.SetAnim(this.animFinish, true);
+                if (this.m_spine != null) {
+                    this.m_spine.SetAnim(this.animFinish, true);
+                }
+                if (this.m_animation != null) {
+                    this.m_animation.SetPlay(this.animFinish);
+                }
             })
             .delay(2).call(() => {
                 director.emit(GameEvent.GAME_FINISH);
@@ -483,23 +525,51 @@ export class PlayerController extends Component {
         switch (Number(state)) {
             case PlayerState.IDLE:
                 if (this.m_state == PlayerState.AIR) {
-                    let duration = this.m_spine.SetAnim(this.animAirOff, false);
-                    this.scheduleOnce(this.onTransitionIdle, duration);
-                } else
-                    this.m_spine.SetAnim(this.animIdle, true);
+                    if (this.m_spine != null) {
+                        let duration = this.m_spine.SetAnim(this.animAirOff, false);
+                        this.scheduleOnce(this.onTransitionIdle, duration);
+                    }
+                    if (this.m_animation != null) {
+                        this.m_animation.SetPlay(this.animIdle);
+                    }
+                }
+                else {
+                    if (this.m_spine != null) {
+                        this.m_spine.SetAnim(this.animIdle, true);
+                    }
+                    if (this.m_animation != null) {
+                        this.m_animation.SetPlay(this.animIdle);
+                    }
+                }
+
                 break;
             case PlayerState.MOVE:
-                this.m_spine.SetAnim(this.animMove, true);
+                if (this.m_spine != null) {
+                    this.m_spine.SetAnim(this.animMove, true);
+                }
+                if (this.m_animation != null) {
+                    this.m_animation.SetPlay(this.animMove);
+                }
                 break;
             case PlayerState.JUMP:
-                let duration = this.m_spine.SetAnim(this.animJumpUp, false);
-                this.jumpAudio.play();
-                setTimeout(() => {
-                    this.m_spine.SetAnim(this.animAirOn, true);
-                }, duration);
+                if (this.m_spine != null) {
+                    let duration = this.m_spine.SetAnim(this.animJumpUp, false);
+                    this.jumpAudio.play();
+                    setTimeout(() => {
+                        this.m_spine.SetAnim(this.animAirOn, true);
+                    }, duration);
+                }
+                if (this.m_animation != null) {
+                    this.m_animation.SetPlay(this.animJumpUp);
+                }
                 break;
             case PlayerState.AIR:
-                this.m_spine.SetAnim(this.animAirOn, true);
+                if (this.m_spine != null) {
+                    this.m_spine.SetAnim(this.animAirOn, true);
+                }
+                if (this.m_animation != null) {
+                    this.m_animation.SetPlay(this.animAirOn);
+                }
                 break;
             case PlayerState.HURT:
                 break;
@@ -508,7 +578,12 @@ export class PlayerController extends Component {
     }
 
     onTransitionIdle() {
-        this.m_spine.SetAnim(this.animIdle, true);
+        if (this.m_spine != null) {
+            this.m_spine.SetAnim(this.animIdle, true);
+        }
+        if (this.m_animation != null) {
+            this.m_animation.SetPlay(this.animIdle);
+        }
     }
 
     onBeginContact(selfCollider: Collider2D, otherCollider: Collider2D, contact: IPhysics2DContact | null) {
