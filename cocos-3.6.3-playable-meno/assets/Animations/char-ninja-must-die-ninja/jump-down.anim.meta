@@ -2,12 +2,12 @@
   "ver": "2.0.3",
   "importer": "animation-clip",
   "imported": true,
-  "uuid": "32906972-8cbc-4495-aa85-814a236c645d",
+  "uuid": "9d4207f8-b055-4835-8c33-94a991c17729",
   "files": [
     ".cconb"
   ],
   "subMetas": {},
   "userData": {
-    "name": "char-ninja-jump-up"
+    "name": "jump-down"
   }
 }

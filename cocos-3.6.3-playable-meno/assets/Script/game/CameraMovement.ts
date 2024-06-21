@@ -202,8 +202,13 @@ export default class CameraMovement extends Component {
 
     onFinish(position: Vec3) {
         this.m_stop = true;
-        this.m_finishPos = position.clone();
-        this.m_target = this.node.worldPosition;
+        if (this.lockX && this.lockY) {
+            //...
+        }
+        else {
+            this.m_finishPos = position.clone();
+            this.m_target = this.node.worldPosition;
+        }
         Tween.stopAllByTarget(this.node);
         this.node.eulerAngles = v3();
         if (this.getComponent(AudioSource) != null)

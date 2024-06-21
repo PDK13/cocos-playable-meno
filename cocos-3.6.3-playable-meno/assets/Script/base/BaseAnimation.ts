@@ -1,4 +1,4 @@
-import { _decorator, AnimationComponent, CCBoolean, Component, director, Node } from 'cc';
+import { _decorator, AnimationComponent, CCBoolean, Component, director, Node, v3 } from 'cc';
 import { BaseSpine } from './BaseSpine';
 const { ccclass, property } = _decorator;
 
@@ -17,12 +17,18 @@ export class BaseAnimation extends Component {
     animationEvent: boolean = false;
 
     animationName: string = '';
+    baseScaleX: number;
+    dir: Number = 1;
 
     protected onLoad(): void {
         if (this.animationEvent) {
             director.on(BaseAnimation.ANIMATION_PLAY, this.animation.resume, this);
             director.on(BaseAnimation.ANIMATION_STOP, this.animation.pause, this);
         }
+    }
+
+    protected start(): void {
+        this.baseScaleX = this.animation.node.scale.x;
     }
 
     public SetPlay(Anim: string = ''): void {
@@ -57,5 +63,19 @@ export class BaseAnimation extends Component {
 
     public SetStop() {
         this.animation.stop();
+    }
+
+    //
+
+    public SetDir(Dir: number) {
+        this.animation.node.setScale(v3(this.baseScaleX * Dir, this.animation.node.getScale().y, 0));
+    }
+
+    public SetLeft() {
+        this.SetDir(-1);
+    }
+
+    public SetRight() {
+        this.SetDir(1);
     }
 }

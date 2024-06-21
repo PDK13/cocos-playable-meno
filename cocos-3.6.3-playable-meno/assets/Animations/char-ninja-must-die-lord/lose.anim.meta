@@ -2,12 +2,12 @@
   "ver": "2.0.3",
   "importer": "animation-clip",
   "imported": true,
-  "uuid": "b92f58b8-ac88-4ebd-b4f3-3c94bb0c643e",
+  "uuid": "6b600c9c-4e43-4a93-ab8e-c686f7489aac",
   "files": [
     ".cconb"
   ],
   "subMetas": {},
   "userData": {
-    "name": "char-ninja-idle"
+    "name": "lose"
   }
 }

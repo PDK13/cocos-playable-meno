@@ -375,13 +375,16 @@ export class PlayerController extends Component {
         if (this.m_finish || this.m_lockInput)
             return;
         //
+        this.m_moveDirection = -1;
+        //
         if (this.m_spine != null) {
             if (this.m_spine.spine._skeleton.scaleX > 0)
                 this.m_currentTarget = null;
             this.m_spine.spine._skeleton.scaleX = this.m_moveDirection;
         }
-        //
-        this.m_moveDirection = -1;
+        if (this.m_animation != null){
+            this.m_animation.SetLeft();
+        }
     }
 
     onPlayerMoveRight() {
@@ -392,13 +395,16 @@ export class PlayerController extends Component {
         if (this.m_finish || this.m_lockInput)
             return;
         //
+        this.m_moveDirection = 1;
+        //
         if (this.m_spine != null) {
             if (this.m_spine.spine._skeleton.scaleX < 0)
                 this.m_currentTarget = null;
             this.m_spine.spine._skeleton.scaleX = this.m_moveDirection;
         }
-        //
-        this.m_moveDirection = 1;
+        if (this.m_animation != null){
+            this.m_animation.SetRight();
+        }
     }
 
     onPlayerMoveStop() {
@@ -465,6 +471,7 @@ export class PlayerController extends Component {
     }
 
     finish() {
+        this.m_finish = true;
         let posX = this.node.worldPosition.x;
         let time = Math.abs(posX - this.m_finishPos.x) / 1000;
         let obj = { x: posX };

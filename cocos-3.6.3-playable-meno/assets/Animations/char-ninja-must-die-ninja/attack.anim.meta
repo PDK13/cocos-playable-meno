@@ -2,12 +2,12 @@
   "ver": "2.0.3",
   "importer": "animation-clip",
   "imported": true,
-  "uuid": "b290bb5d-699e-4f00-8167-dd87ef6fa105",
+  "uuid": "e5ddff3c-706d-46ff-b1b2-c889fa23c5e3",
   "files": [
     ".cconb"
   ],
   "subMetas": {},
   "userData": {
-    "name": "char-ninja-move"
+    "name": "attack"
   }
 }
