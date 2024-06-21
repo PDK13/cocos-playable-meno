@@ -1,8 +1,13 @@
-import { _decorator, Collider2D, Component, Node, RigidBody2D, tween, Vec2, Vec3 } from 'cc';
+import { _decorator, CCBoolean, Collider2D, Component, director, Node, RigidBody2D, tween, Vec2, Vec3 } from 'cc';
+import GameEvent from '../GameEvent';
 const { ccclass, property } = _decorator;
 
 @ccclass('BasePlayer')
 export class BasePlayer extends Component {
+
+    protected onLoad(): void {
+        director.on(GameEvent.PLAYER_HURT, this.onHurt, this);
+    }
 
     protected m_control: boolean = true;
 
@@ -51,5 +56,19 @@ export class BasePlayer extends Component {
                 });
             }).start();
         }, 1);
+    }
+
+    //
+
+    @property(CCBoolean)
+    HurtDead: boolean = false;
+
+    m_dead: boolean = false;
+
+    onHurt() {
+        if (this.HurtDead) {
+            this.m_dead = true;
+            director.emit(GameEvent.GAME_LOSE);
+        }
     }
 }
