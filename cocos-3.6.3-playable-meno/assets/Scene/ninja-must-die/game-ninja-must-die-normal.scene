@@ -2342,7 +2342,7 @@
       "b": 255,
       "a": 255
     },
-    "_string": "LOSE",
+    "_string": "FAIL",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 60,
@@ -4470,7 +4470,7 @@
     "animFinish": "attack",
     "xDamping": 40,
     "airSpeedX": 10,
-    "maxSpeedX": 40,
+    "maxSpeedX": 30,
     "jumpForce": 50,
     "bulletSpeed": 4000,
     "bulletRange": 1000,
@@ -12274,8 +12274,8 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 250,
-      "y": -200,
+      "x": 510,
+      "y": -345,
       "z": 0
     },
     "_lrot": {
@@ -12349,8 +12349,8 @@
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 300,
-      "height": 3000
+      "width": 800,
+      "height": 200
     },
     "_id": "33ceeHTG5BFpDf3ZVuz15g"
   },
@@ -13638,7 +13638,7 @@
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 2000,
+      "width": 700,
       "height": 2000
     },
     "_id": "2ffixru7BO75Gkas/UxW2i"
@@ -13727,7 +13727,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 759.698,
+      "y": 868.734,
       "z": 0
     },
     "_lrot": {
@@ -13763,8 +13763,8 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 1294.92,
-      "height": 132
+      "width": 1417.17,
+      "height": 146
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -13792,7 +13792,7 @@
       "b": 255,
       "a": 255
     },
-    "_string": "GO TO THE LORD",
+    "_string": "DEFEAT THE LORD",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 150,
@@ -13827,7 +13827,7 @@
       "b": 0,
       "a": 255
     },
-    "_width": 3,
+    "_width": 10,
     "_id": "c5QcbDeRlM4qfEycrKlz7H"
   },
   {
