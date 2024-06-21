@@ -12,6 +12,9 @@ export class BaseFinish extends Component {
     animIdle: string = "";
 
     @property(CCString)
+    animTrigger: string = "";
+
+    @property(CCString)
     animReady: string = "";
 
     @property(CCString)
@@ -64,7 +67,9 @@ export class BaseFinish extends Component {
         this.m_ready = true;
         //
         if (this.m_spine != null) {
-
+            this.scheduleOnce(() => {
+                this.m_spine.SetAnim(this.animReady, true)
+            }, this.m_spine.SetAnim(this.animTrigger, false));
         }
         if (this.m_animation != null) {
             this.m_animation.SetPlay(this.animReady);
@@ -75,7 +80,7 @@ export class BaseFinish extends Component {
         this.m_ready = false;
         //
         if (this.m_spine != null) {
-
+            this.m_spine.SetAnim(this.animIdle, true)
         }
         if (this.m_animation != null) {
             this.m_animation.SetPlay(this.animIdle);
@@ -86,7 +91,7 @@ export class BaseFinish extends Component {
         this.m_finish = true;
         //
         if (this.m_spine != null) {
-
+            this.m_spine.SetAnim(this.animFinish, false)
         }
         if (this.m_animation != null) {
             this.m_animation.SetPlay(this.animFinish);
