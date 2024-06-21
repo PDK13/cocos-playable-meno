@@ -19,7 +19,8 @@ export class BaseObject extends Component {
     }
 
     onTweenMove(Pos: Vec2, Duration: number, Delay: number = 0, Option: object = { easing: 'linear' }): Tween<Node> {
-        //If Object got Rigidbody, it can't be move by tween!
+        //NOTE:
+        //If child object got rigidbody, should move each child object, not their parent, else it can't be moved!
         return tween(this.node)
             .delay(Delay)
             .to(Duration, { position: v3(Pos.x, Pos.y, this.node.position.z) }, Option)
