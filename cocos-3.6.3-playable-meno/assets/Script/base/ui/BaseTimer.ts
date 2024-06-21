@@ -1,5 +1,5 @@
 import { _decorator, Animation, CCBoolean, CCFloat, CCString, Color, Component, director, easing, Label, math, Node, tween, UITransform, v2, v3, Vec2 } from 'cc';
-import GameEvent from '../GameEvent';
+import GameEvent from '../../GameEvent';
 const { ccclass, property } = _decorator;
 
 @ccclass('BaseTimer')

@@ -1,8 +1,8 @@
 import { _decorator, CCInteger, CCString, Collider2D, Component, Contact2DType, director, IPhysics2DContact, Node } from 'cc';
-import { BaseObjectTrigger } from './BaseObjectTrigger';
+import { BaseObjectTrigger } from './object/BaseObjectTrigger';
 import GameEvent from '../GameEvent';
-import { BaseSpine } from './BaseSpine';
-import { BaseAnimation } from './BaseAnimation';
+import { BaseSpine } from './renderer/BaseSpine';
+import { BaseAnimation } from './renderer/BaseAnimation';
 const { ccclass, property } = _decorator;
 
 @ccclass('BaseFinish')

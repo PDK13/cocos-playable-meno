@@ -1,5 +1,5 @@
 import { _decorator, Component, director, Node } from 'cc';
-import { BaseObjectTrigger } from '../base/BaseObjectTrigger';
+import { BaseObjectTrigger } from '../base/object/BaseObjectTrigger';
 import GameEvent from '../GameEvent';
 const { ccclass, property } = _decorator;
 

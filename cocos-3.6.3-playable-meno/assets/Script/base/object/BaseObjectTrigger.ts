@@ -1,11 +1,14 @@
-import { _decorator, CCBoolean, Collider2D, Component, Contact2DType, director, IPhysics2DContact, Node, RigidBody2D } from 'cc';
-import { BasePlayer } from './BasePlayer';
+import { _decorator, CCBoolean, CCString, Collider2D, Component, Contact2DType, director, IPhysics2DContact, Node, RigidBody2D } from 'cc';
+import { BasePlayer } from '../BasePlayer';
 const { ccclass, property } = _decorator;
 
 @ccclass('BaseObjectTrigger')
 export class BaseObjectTrigger extends Component {
 
     static OBJECT_TRIGGER: string = 'OBJECT_TRIGGER';
+
+    @property(CCString)
+    keyTrigger: string = 'object-trigger';
 
     @property(CCBoolean)
     mutiTrigger: boolean = false;
@@ -27,6 +30,7 @@ export class BaseObjectTrigger extends Component {
                 if (!this.mutiTrigger && this.m_playerTrigger > 1)
                     return;
                 director.emit(BaseObjectTrigger.OBJECT_TRIGGER, this, true);
+                director.emit(this.keyTrigger, true);
                 break;
         }
     }
@@ -38,6 +42,7 @@ export class BaseObjectTrigger extends Component {
                 if (!this.mutiTrigger && this.m_playerTrigger > 0)
                     return;
                 director.emit(BaseObjectTrigger.OBJECT_TRIGGER, this, false);
+                director.emit(this.keyTrigger, false);
                 break;
         }
     }

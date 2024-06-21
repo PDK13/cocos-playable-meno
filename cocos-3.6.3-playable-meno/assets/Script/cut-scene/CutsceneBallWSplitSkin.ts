@@ -1,5 +1,5 @@
 import { _decorator, CCFloat, Component, Node } from 'cc';
-import { BaseObject } from '../base/BaseObject';
+import { BaseObject } from '../base/object/BaseObject';
 const { ccclass, property } = _decorator;
 
 @ccclass('CutsceneBallWSplitSkin')

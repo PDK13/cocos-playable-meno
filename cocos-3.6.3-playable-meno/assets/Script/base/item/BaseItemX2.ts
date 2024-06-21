@@ -1,5 +1,5 @@
 import { _decorator, Collider2D, Component, Contact2DType, director, IPhysics2DContact, Node, RigidBody2D } from 'cc';
-import { BasePlayer } from './BasePlayer';
+import { BasePlayer } from '../BasePlayer';
 const { ccclass, property } = _decorator;
 
 @ccclass('BaseItemX2')

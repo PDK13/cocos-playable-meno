@@ -1,7 +1,7 @@
 import { _decorator, CCFloat, Component, director, Node, v3, Vec3 } from 'cc';
-import GameEvent from '../GameEvent';
-import CameraMovement from '../game/CameraMovement';
-import { BasePlayer } from './BasePlayer';
+import GameEvent from '../../GameEvent';
+import CameraMovement from '../../game/CameraMovement';
+import { BasePlayer } from '../BasePlayer';
 const { ccclass, property } = _decorator;
 
 @ccclass('BaseArrow')

@@ -1,9 +1,9 @@
 import { _decorator, Node, AudioSource, Component, Vec2, director, RigidBody2D, Vec3, tween, v3, Quat, CCFloat, sp, PhysicsSystem2D, ERaycast2DType, v2, input, Contact2DType, Collider2D, IPhysics2DContact, Input, __private, EventMouse, instantiate, math, Skeleton, BoxCollider2D, Rect, CCString } from 'cc';
 import GameEvent from '../GameEvent';
-import { BaseSpine } from '../base/BaseSpine';
+import { BaseSpine } from '../base/renderer/BaseSpine';
 import { BasePlayer } from '../base/BasePlayer';
-import { BaseObject } from '../base/BaseObject';
-import { BaseAnimation } from '../base/BaseAnimation';
+import { BaseObject } from '../base/object/BaseObject';
+import { BaseAnimation } from '../base/renderer/BaseAnimation';
 const { ccclass, property } = _decorator;
 const { spine } = sp;
 
