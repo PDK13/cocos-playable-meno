@@ -1,4 +1,4 @@
-import { _decorator, Node, AudioSource, Component, Vec2, director, RigidBody2D, Vec3, tween, v3, Quat, CCFloat, sp, PhysicsSystem2D, ERaycast2DType, v2, input, Contact2DType, Collider2D, IPhysics2DContact, Input, __private, EventMouse, instantiate, math, Skeleton, BoxCollider2D, Rect, CCString } from 'cc';
+import { _decorator, Node, AudioSource, Component, Vec2, director, RigidBody2D, Vec3, tween, v3, Quat, CCFloat, sp, PhysicsSystem2D, ERaycast2DType, v2, input, Contact2DType, Collider2D, IPhysics2DContact, Input, __private, EventMouse, instantiate, math, Skeleton, BoxCollider2D, Rect, CCString, CCBoolean, CCInteger } from 'cc';
 import GameEvent from '../GameEvent';
 import { BaseSpine } from '../base/renderer/BaseSpine';
 import { BasePlayer } from '../base/BasePlayer';
@@ -17,6 +17,9 @@ export enum PlayerState {
 
 @ccclass('PlayerController')
 export class PlayerController extends Component {
+
+    @property(CCBoolean)
+    auto: boolean = false;
 
     @property(CCString)
     defaultSkin = "2";
@@ -178,6 +181,21 @@ export class PlayerController extends Component {
         }
         //
         this.m_jumpTimeCounter = this.m_jumpTime;
+
+        if (this.auto) {
+            this.scheduleOnce(() => {
+                this.m_moveDirection = 1;
+                //
+                if (this.m_spine != null) {
+                    if (this.m_spine.spine._skeleton.scaleX < 0)
+                        this.m_currentTarget = null;
+                    this.m_spine.spine._skeleton.scaleX = this.m_moveDirection;
+                }
+                if (this.m_animation != null) {
+                    this.m_animation.SetRight();
+                }
+            }, 2);
+        }
     }
 
     onFlag() {
@@ -279,7 +297,9 @@ export class PlayerController extends Component {
     }
 
     onJumRelease() {
-        if (this.m_finish || this.m_player.m_dead)
+        if (this.auto)
+            return;
+        if (this.auto || this.m_finish || this.m_player.m_dead)
             return
         this.m_lockJump = true;
         this.m_jumpTimeCounter = this.m_jumpTime;
@@ -294,6 +314,8 @@ export class PlayerController extends Component {
     }
 
     onJump(dt: number) {
+        if (this.auto)
+            return;
         this.m_activeJumpInput = true;
         if (this.m_finish || this.m_lockInput || this.m_lockJump || !this.m_player.Control || this.m_player.m_dead)
             return;
@@ -308,7 +330,7 @@ export class PlayerController extends Component {
     }
 
     onFire(active: boolean) {
-        if (this.m_finish || this.m_hurt || this.m_player.m_dead)
+        if (this.auto || this.m_finish || this.m_hurt || this.m_player.m_dead)
             return;
         if (active) {
             if (!this.m_fire)
@@ -358,6 +380,8 @@ export class PlayerController extends Component {
         this.m_state = PlayerState.HURT;
         this.m_hurt = true;
         this.m_lockInput = true;
+        this.auto = false;
+        this.onPlayerMoveStop();
         //
         if (this.m_player.HurtDead) {
             if (this.m_spine != null) {
@@ -365,6 +389,12 @@ export class PlayerController extends Component {
             }
             if (this.m_animation != null) {
                 this.m_animation.SetPlay(this.animDead);
+                if (this.m_player.revive > 0)
+                    this.scheduleOnce(() => {
+                        this.m_animation.SetPlay(this.animIdle);
+                        this.m_lockInput = false;
+                        this.m_hurt = false;
+                    }, 1);
             }
         }
         else {
@@ -384,8 +414,7 @@ export class PlayerController extends Component {
     }
 
     onPlayerMoveLeft() {
-        if (this.m_finish || this.m_lockInput || !this.m_player.Control || this.m_player.m_dead) {
-            this.onPlayerMoveStop();
+        if (this.auto || this.m_finish || this.m_lockInput || !this.m_player.Control || this.m_player.m_dead) {
             return;
         }
         //
@@ -402,10 +431,8 @@ export class PlayerController extends Component {
     }
 
     onPlayerMoveRight() {
-        if (this.m_finish || this.m_lockInput || !this.m_player.Control || this.m_player.m_dead) {
-            this.onPlayerMoveStop();
+        if (this.auto || this.m_finish || this.m_lockInput || !this.m_player.Control || this.m_player.m_dead)
             return;
-        }
         //
         this.m_moveDirection = 1;
         //
@@ -420,6 +447,8 @@ export class PlayerController extends Component {
     }
 
     onPlayerMoveStop() {
+        if (this.auto)
+            return;
         this.m_moveDirection = 0;
         let veloc = this.m_rigidbody.linearVelocity.clone();
         veloc.x = 0;

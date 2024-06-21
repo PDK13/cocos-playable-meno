@@ -1,6 +1,7 @@
 import { _decorator, Component, PhysicsSystem2D, v2, Node, game, director, tween, v3, CCString, sys, Enum, CCBoolean, Input } from 'cc';
 import GameEvent from './GameEvent';
 import { CCInteger } from 'cc';
+import { BasePlayer } from './base/BasePlayer';
 const { ccclass, property } = _decorator;
 
 @ccclass('Loader')

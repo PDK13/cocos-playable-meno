@@ -28,6 +28,5 @@ export class BaseObjectTriggerMove extends Component {
         MovePos.x += this.node.position.x + this.moveOffset.x;
         MovePos.y += this.node.position.y + this.moveOffset.y;
         this.baseObject.onTweenMove(MovePos, this.moveDuration);
-        console.log(MovePos);
     }
 }

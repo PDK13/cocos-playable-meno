@@ -1,6 +1,7 @@
-import { _decorator, Component, Node, input, Input, KeyCode, director, CCBoolean} from 'cc';
+import { _decorator, Component, Node, input, Input, KeyCode, director, CCBoolean } from 'cc';
 import GameEvent from '../GameEvent';
 import Loader from '../Loader';
+import { BasePlayer } from '../base/BasePlayer';
 const { ccclass, property } = _decorator;
 
 @ccclass('PlayerInput')
@@ -33,17 +34,18 @@ export class PlayerInput extends Component {
     m_fireActive: boolean = false;
     m_switchRB: number = 0;
 
-    onLoad () {
-        if(this.directStore) {
-
+    onLoad() {
+        if (this.directStore) {
             return;
-        }           
-        if(this.loop)
-        {            
+        }
+        if (this.loop) {
             this.buttonRight.getChildByName('hand').active = Loader.finish;
-            if(Loader.finish)
+            if (Loader.finish)
                 return;
         }
+        director.on(BasePlayer.PLAYER_REVIVE, this.onRevive, this);
+        director.on(BasePlayer.PLAYER_DEAD, this.onDead, this);
+        //
         input.on(Input.EventType.KEY_DOWN, this.onKeyPressed, this);
         input.on(Input.EventType.KEY_UP, this.onKeyReleased, this);
         //
@@ -66,57 +68,59 @@ export class PlayerInput extends Component {
         this.buttonSwitch.on(Input.EventType.TOUCH_START, this.onSwitchRB, this);
     }
 
-    onJumpStart()
-    {
+    onRevive() {
+        this.buttonLeft.active = true;
+        this.buttonRight.active = true;
+        this.buttonJump.active = true;
+    }
+
+    onDead() {
+        this.buttonLeft.active = false;
+        this.buttonRight.active = false;
+        this.buttonJump.active = false;
+    }
+
+    onJumpStart() {
         this.m_jumpActive = true;
     }
 
-    onJumpEnd()
-    {
+    onJumpEnd() {
         this.m_jumpActive = false;
         director.emit(GameEvent.PLAYER_JUMP_RELEASE);
     }
 
-    onFireStart()
-    {
+    onFireStart() {
         this.m_fireActive = true;
     }
 
-    onFireEnd()
-    {
+    onFireEnd() {
         this.m_fireActive = false;
         director.emit(GameEvent.PLAYER_FIRE, false);
     }
 
-    onLeftStart()
-    {
+    onLeftStart() {
         this.m_keyLeftActive = true;
     }
 
-    onLeftEnd()
-    {                
+    onLeftEnd() {
         this.m_keyLeftActive = false;
-        if(!this.m_keyRightActive)
+        if (!this.m_keyRightActive)
             director.emit(GameEvent.PLAYER_MOVE_STOP);
     }
 
-    onRightStart()
-    {
+    onRightStart() {
         this.m_keyRightActive = true;
     }
 
-    onRightEnd()
-    {
+    onRightEnd() {
         this.m_keyRightActive = false;
-        if(!this.m_keyLeftActive)
+        if (!this.m_keyLeftActive)
             director.emit(GameEvent.PLAYER_MOVE_STOP);
     }
 
-    onKeyPressed(event)
-    {
+    onKeyPressed(event) {
         let keyCode = event.keyCode;
-        switch(keyCode)
-        {
+        switch (keyCode) {
             case KeyCode.ARROW_LEFT:
                 this.m_keyLeftActive = true;
                 break;
@@ -133,19 +137,17 @@ export class PlayerInput extends Component {
         }
     }
 
-    onKeyReleased(event)
-    {
+    onKeyReleased(event) {
         let keyCode = event.keyCode;
-        switch(keyCode)
-        {
+        switch (keyCode) {
             case KeyCode.ARROW_LEFT:
                 this.m_keyLeftActive = false;
-                if(!this.m_keyRightActive)
+                if (!this.m_keyRightActive)
                     director.emit(GameEvent.PLAYER_MOVE_STOP);
                 break;
             case KeyCode.ARROW_RIGHT:
                 this.m_keyRightActive = false;
-                if(!this.m_keyLeftActive)
+                if (!this.m_keyLeftActive)
                     director.emit(GameEvent.PLAYER_MOVE_STOP);
                 break;
             case KeyCode.SPACE:
@@ -161,20 +163,19 @@ export class PlayerInput extends Component {
     }
 
     update(dt: number) {
-        if(this.m_keyLeftActive)
+        if (this.m_keyLeftActive)
             director.emit(GameEvent.PLAYER_MOVE_LEFT);
-        else if(this.m_keyRightActive)
+        else if (this.m_keyRightActive)
             director.emit(GameEvent.PLAYER_MOVE_RIGHT);
 
-        if(this.m_jumpActive)
+        if (this.m_jumpActive)
             director.emit(GameEvent.PLAYER_JUMP, dt);
 
-        if(this.m_fireActive)
+        if (this.m_fireActive)
             director.emit(GameEvent.PLAYER_FIRE, true);
     }
 
-    onSwitchRB()
-    {
+    onSwitchRB() {
         this.m_switchRB = this.m_switchRB == 0 ? 1 : 0;
         director.emit(GameEvent.PLAYER_SWITCH, this.m_switchRB);
     }

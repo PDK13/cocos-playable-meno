@@ -1,13 +1,22 @@
-import { _decorator, CCBoolean, Collider2D, Component, director, Node, RigidBody2D, tween, Vec2, Vec3 } from 'cc';
+import { _decorator, CCBoolean, CCInteger, Collider2D, Component, director, Node, RigidBody2D, tween, v3, Vec2, Vec3 } from 'cc';
 import GameEvent from '../GameEvent';
 const { ccclass, property } = _decorator;
 
 @ccclass('BasePlayer')
 export class BasePlayer extends Component {
 
+    static PLAYER_DEAD: string = 'PLAYER_DEAD';
+    static PLAYER_REVIVE: string = 'PLAYER_REVIVE';
+
     protected onLoad(): void {
         director.on(GameEvent.PLAYER_HURT, this.onHurt, this);
     }
+
+    protected start(): void {
+        this.m_revivePos = this.node.position.clone();
+    }
+
+    //
 
     protected m_control: boolean = true;
 
@@ -66,9 +75,29 @@ export class BasePlayer extends Component {
     m_dead: boolean = false;
 
     onHurt() {
+        if (this.m_dead)
+            return;
         if (this.HurtDead) {
             this.m_dead = true;
-            director.emit(GameEvent.GAME_LOSE);
+            if (this.revive > 0) {
+                this.scheduleOnce(() => {
+                    this.node.position = v3(this.m_revivePos.x, this.m_revivePos.y, this.node.position.z);
+                    this.revive--;
+                    this.m_dead = false;
+                    director.emit(BasePlayer.PLAYER_REVIVE);
+                }, 1);
+            }
+            else {
+                director.emit(GameEvent.GAME_LOSE);
+            }
+            director.emit(BasePlayer.PLAYER_DEAD);
         }
     }
+
+    //
+
+    @property(CCInteger)
+    revive: number = 0;
+
+    m_revivePos: Vec3;
 }
