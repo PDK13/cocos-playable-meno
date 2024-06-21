@@ -159,7 +159,7 @@
     "_priority": 1,
     "_fov": 45,
     "_fovAxis": 0,
-    "_orthoHeight": 368,
+    "_orthoHeight": 216.7111111111111,
     "_near": 1,
     "_far": 1000,
     "_color": {
@@ -4562,6 +4562,7 @@
     "_enabled": true,
     "__prefab": null,
     "HurtDead": true,
+    "HurtDelay": 1,
     "revive": 1,
     "_id": "39YfpoBoZIo4P2uSRE3bk4"
   },
@@ -4672,7 +4673,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 139.809,
-      "y": -400,
+      "y": -420,
       "z": 0
     },
     "_lrot": {
@@ -5922,7 +5923,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 389.809,
-      "y": -400,
+      "y": -420,
       "z": 0
     },
     "_lrot": {
@@ -7172,7 +7173,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 639.809,
-      "y": -400,
+      "y": -420,
       "z": 0
     },
     "_lrot": {
@@ -8422,7 +8423,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 889.809,
-      "y": -400,
+      "y": -420,
       "z": 0
     },
     "_lrot": {

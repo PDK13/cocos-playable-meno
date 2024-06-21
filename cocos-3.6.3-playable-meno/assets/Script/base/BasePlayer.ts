@@ -1,4 +1,4 @@
-import { _decorator, CCBoolean, CCInteger, Collider2D, Component, director, Node, RigidBody2D, tween, v3, Vec2, Vec3 } from 'cc';
+import { _decorator, CCBoolean, CCFloat, CCInteger, Collider2D, Component, director, Node, RigidBody2D, tween, v3, Vec2, Vec3 } from 'cc';
 import GameEvent from '../GameEvent';
 const { ccclass, property } = _decorator;
 
@@ -72,6 +72,9 @@ export class BasePlayer extends Component {
     @property(CCBoolean)
     HurtDead: boolean = false;
 
+    @property(CCFloat)
+    HurtDelay: number = 1;
+
     m_dead: boolean = false;
 
     onHurt() {
@@ -85,10 +88,12 @@ export class BasePlayer extends Component {
                     this.revive--;
                     this.m_dead = false;
                     director.emit(BasePlayer.PLAYER_REVIVE);
-                }, 1);
+                }, this.HurtDelay);
             }
             else {
-                director.emit(GameEvent.GAME_LOSE);
+                this.scheduleOnce(() => {
+                    director.emit(GameEvent.GAME_LOSE);
+                }, this.HurtDelay);
             }
             director.emit(BasePlayer.PLAYER_DEAD);
         }
