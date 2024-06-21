@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.AnimationClip",
-    "_name": "char-ninja-dead",
+    "_name": "dead",
     "_objFlags": 0,
     "__editorExtras__": {
       "embeddedPlayerGroups": []
@@ -9,7 +9,7 @@
     "_native": "",
     "sample": 12,
     "speed": 1,
-    "wrapMode": 2,
+    "wrapMode": 1,
     "enableTrsBlending": false,
     "_duration": 0.8333333333333334,
     "_hash": 500763545,

@@ -4468,6 +4468,7 @@
     "animAirOn": "jump-up",
     "animAirOff": "jump-down",
     "animFinish": "attack",
+    "animDead": "dead",
     "xDamping": 40,
     "airSpeedX": 10,
     "maxSpeedX": 30,

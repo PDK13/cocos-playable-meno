@@ -42,6 +42,9 @@ export class PlayerController extends Component {
     @property(CCString)
     animFinish: string = 'door_1';
 
+    @property(CCString)
+    animDead: string = 'dead';
+
     @property(CCFloat)
     xDamping = 40;
 
@@ -356,12 +359,25 @@ export class PlayerController extends Component {
         this.m_hurt = true;
         this.m_lockInput = true;
         //
-        if (this.m_spine != null) {
-            let duration = this.m_spine.SetAnim('hit', false);
-            this.scheduleOnce(() => {
-                this.m_lockInput = false;
-                this.m_hurt = false;
-            }, duration);
+        if (this.m_player.HurtDead) {
+            if (this.m_spine != null) {
+                //...
+            }
+            if (this.m_animation != null) {
+                this.m_animation.SetPlay(this.animDead);
+            }
+        }
+        else {
+            if (this.m_spine != null) {
+                let duration = this.m_spine.SetAnim('hit', false);
+                this.scheduleOnce(() => {
+                    this.m_lockInput = false;
+                    this.m_hurt = false;
+                }, duration);
+            }
+            if (this.m_animation != null) {
+                //...
+            }
         }
         //
         this.hurtAudio.play();
