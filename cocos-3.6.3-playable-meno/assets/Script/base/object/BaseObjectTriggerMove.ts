@@ -8,6 +8,9 @@ export class BaseObjectTriggerMove extends Component {
     @property(CCString)
     keyTrigger: string = 'object-trigger';
 
+    @property(CCString)
+    keyReturn: string = 'object-return';
+
     @property(BaseObject)
     baseObject: BaseObject = null;
 
@@ -17,8 +20,15 @@ export class BaseObjectTriggerMove extends Component {
     @property(CCFloat)
     moveDuration: number = 0.5;
 
+    posStart: Vec2;
+
     protected onLoad(): void {
         director.on(this.keyTrigger, this.onMove, this);
+        director.on(this.keyReturn, this.onReturn, this);
+    }
+
+    protected start(): void {
+        this.posStart = v2(this.node.position.clone().x, this.node.position.clone().y);
     }
 
     onMove(Stage: boolean) {
@@ -28,5 +38,9 @@ export class BaseObjectTriggerMove extends Component {
         MovePos.x += this.node.position.x + this.moveOffset.x;
         MovePos.y += this.node.position.y + this.moveOffset.y;
         this.baseObject.onTweenMove(MovePos, this.moveDuration);
+    }
+
+    onReturn() {
+        this.baseObject.onPosV2(this.posStart);
     }
 }
