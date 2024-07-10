@@ -77,8 +77,8 @@
     "_prefab": null,
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 960.0000000000001,
-      "y": 540,
+      "x": 368.0000000000001,
+      "y": 207,
       "z": 0
     },
     "_lrot": {
@@ -159,7 +159,7 @@
     "_priority": 1,
     "_fov": 45,
     "_fovAxis": 0,
-    "_orthoHeight": 565.3333333333334,
+    "_orthoHeight": 216.7111111111111,
     "_near": 1,
     "_far": 1000,
     "_color": {
@@ -229,7 +229,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -440,
+      "y": -168.66666666666666,
       "z": 0
     },
     "_lrot": {
@@ -241,8 +241,8 @@
     },
     "_lscale": {
       "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
+      "x": 0.38333333333333336,
+      "y": 0.38333333333333336,
       "z": 1
     },
     "_layer": 33554432,
@@ -1134,7 +1134,7 @@
     "_enabled": true,
     "__prefab": null,
     "loop": false,
-    "directStore": false,
+    "directStore": true,
     "buttonLeft": {
       "__id__": 12
     },
@@ -1201,6 +1201,7 @@
     "rotateCanvasLandscape": false,
     "changeEditorDevice": false,
     "oneTimeExecution": false,
+    "lastOrientation": false,
     "currentNodeInEditorFlag": false,
     "currentNodeInEditor": null,
     "_id": "69HkLDzA1DlatrcwRhMYnk"
@@ -2949,8 +2950,8 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 1920,
-      "height": 1080
+      "width": 736,
+      "height": 414
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2970,8 +2971,8 @@
     "__prefab": null,
     "loop": false,
     "loopTimeOut": false,
-    "directStore": false,
-    "androidLink": "https://play.google.com/store/apps/details?id=com.mystery.island.run.jungle.adventure&gl=us",
+    "directStore": true,
+    "androidLink": "https://play.google.com/store/apps/details?id=com.level.devil.ninja.must.die",
     "iosLink": "",
     "adsType": 0,
     "panelComplete": {
@@ -13861,8 +13862,8 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 1920,
-      "height": 1080
+      "width": 736,
+      "height": 414
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",

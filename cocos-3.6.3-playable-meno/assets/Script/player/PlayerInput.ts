@@ -35,6 +35,11 @@ export class PlayerInput extends Component {
     m_switchRB: number = 0;
 
     onLoad() {
+
+        director.on(BasePlayer.PLAYER_REVIVE, this.onRevive, this);
+        director.on(BasePlayer.PLAYER_DEAD, this.onDead, this);
+        //
+
         if (this.directStore) {
             return;
         }
@@ -43,9 +48,7 @@ export class PlayerInput extends Component {
             if (Loader.finish)
                 return;
         }
-        director.on(BasePlayer.PLAYER_REVIVE, this.onRevive, this);
-        director.on(BasePlayer.PLAYER_DEAD, this.onDead, this);
-        //
+        
         input.on(Input.EventType.KEY_DOWN, this.onKeyPressed, this);
         input.on(Input.EventType.KEY_UP, this.onKeyReleased, this);
         //
